@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Pontos - Exiba Outdoor</title>
+    <meta name="description" content="Confira nossa rede de mídia exterior. Mais de 700 pontos estratégicos em todo o Nordeste.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Estilos específicos para a página de Pontos */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #6c757d;
+            --accent-color: #17a2b8;
+            --light-bg: #f8f9fa;
+            --dark-bg: #343a40;
+            --text-color: #333;
+            --light-text: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), #003366);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .map-coverage {
+            padding: 80px 0;
+            background: var(--light-bg);
+            position: relative;
+        }
+
+        .map-coverage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .map-container {
+            position: relative;
+            height: 650px;
+            margin: 40px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            display: flex;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .map-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        
+        #map {
+            flex: 1;
+            height: 100%;
+        }
+        
+        .map-legend {
+            width: 280px;
+            background: var(--white);
+            padding: 25px;
+            box-shadow: -2px 0 15px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+            border-left: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .map-legend h4 {
+            color: var(--dark-bg);
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .legend-scale {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .legend-gradient {
+            flex: 1;
+            height: 10px;
+            margin: 0 10px;
+            background: linear-gradient(to right, #00ff00, #ffff00, #ff0000);
+            border-radius: 5px;
+        }
+        
+        .coverage-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .coverage-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .stat-item {
+            padding: 30px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        /* Tabs de cidades */
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .tab-btn:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+        }
+
+        /* Filtros */
+        .filtros-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .filtro-btn {
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filtro-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .filtro-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .filtro-btn i {
+            font-size: 0.9em;
+        }
+        
+        .map-container {
+            height: 500px;
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        #map {
+            height: 100%;
+            width: 100%;
+            border: none;
+        }
+        
+        .filtros {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .filtros h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.2rem;
+        }
+        
+        .filtro-grupo {
+            margin-bottom: 15px;
+        }
+        
+        .filtro-grupo label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .filtro-grupo select, 
+        .filtro-grupo input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .tabela-pontos {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.9rem;
+        }
+        
+        .tabela-pontos th, 
+        .tabela-pontos td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tabela-pontos th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .tabela-pontos tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .cidade-tab {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            background: #f0f0f0;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .cidade-tab.ativo {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .tabs-cidades {
+            margin: 20px 0 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .map-container {
+                height: 350px;
+            }
+            
+            .tabela-pontos {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Nossos Pontos</h1>
+            <p>Conheça nossa rede de mídia exterior no Nordeste</p>
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filtros">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossa Cobertura</h2>
+                <p class="section-subtitle">Mais de 700 pontos estratégicos em 3 cidades do Nordeste</p>
+            </div>
+            
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="todas">
+                    <i class="fas fa-map-marker-alt"></i> Todas as Cidades
+                </button>
+                <button class="tab-btn" data-tab="joao-pessoa">
+                    <i class="fas fa-map-pin"></i> João Pessoa
+                </button>
+                <button class="tab-btn" data-tab="campina-grande">
+                    <i class="fas fa-map-pin"></i> Campina Grande
+                </button>
+                <button class="tab-btn" data-tab="caruaru">
+                    <i class="fas fa-map-pin"></i> Caruaru
+                </button>
+            </div>
+            
+            <div class="filtros-container">
+                <button class="filtro-btn active" data-filter="todos">
+                    <i class="fas fa-th-large"></i> Todos
+                </button>
+                <button class="filtro-btn" data-filter="outdoor">
+                    <i class="fas fa-sign"></i> Outdoor
+                </button>
+                <button class="filtro-btn" data-filter="painel">
+                    <i class="fas fa-square"></i> Painel
+                </button>
+                <button class="filtro-btn" data-filter="led">
+                    <i class="fas fa-tv"></i> Painel de LED
+                </button>
+                <button class="filtro-btn" data-filter="frontlight">
+                    <i class="fas fa-lightbulb"></i> Frontlight
+                </button>
+                <button class="filtro-btn" data-filter="empena">
+                    <i class="fas fa-building"></i> Empena
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa de Cobertura -->
+    <section class="map-coverage">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossa Cobertura no Nordeste</h2>
+                <p class="section-subtitle">Visualize nossa abrangência e concentração de pontos de mídia nas principais cidades da região</p>
+            </div>
+            
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-legend">
+                    <h4><i class="fas fa-layer-group"></i> Intensidade de Cobertura</h4>
+                    <div class="legend-scale">
+                        <span>Baixa</span>
+                        <div class="legend-gradient">
+                            <div class="gradient-bar"></div>
+                        </div>
+                        <span>Alta</span>
+                    </div>
+                    
+                    <div class="map-legend-divider"></div>
+                    
+                    <h4><i class="fas fa-map-marked-alt"></i> Cidades</h4>
+                    <div class="city-markers">
+                        <div class="city-marker">
+                            <span class="marker-dot" style="background: #FF4D4D;"></span>
+                            <span>João Pessoa</span>
+                        </div>
+                        <div class="city-marker">
+                            <span class="marker-dot" style="background: #4CAF50;"></span>
+                            <span>Campina Grande</span>
+                        </div>
+                        <div class="city-marker">
+                            <span class="marker-dot" style="background: #2196F3;"></span>
+                            <span>Caruaru</span>
+                        </div>
+                    </div>
+                    
+                    <div class="map-legend-divider"></div>
+                    
+                    <div class="map-legend-actions">
+                        <button class="btn-legend" id="zoom-in">
+                            <i class="fas fa-search-plus"></i> Aproximar
+                        </button>
+                        <button class="btn-legend" id="zoom-out">
+                            <i class="fas fa-search-minus"></i> Afastar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="coverage-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="stat-number">700+</div>
+                    <div class="stat-label">Pontos de Mídia</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Cidades Atendidas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Visibilidade Contínua</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabela de Pontos -->
+    <section class="container" style="padding: 60px 0;">
+        <div class="section-header" style="margin-bottom: 40px;">
+            <h2 class="section-title">Nossos Pontos de Mídia</h2>
+            <p class="section-subtitle">Conheça nossa cobertura nas principais cidades</p>
+        </div>
+        
+        <div class="cidades-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+            <!-- João Pessoa -->
+            <div class="cidade-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div class="cidade-imagem" style="height: 200px; overflow: hidden;">
+                    <img src="assets/images/joao-pessoa.jpg" alt="Mídia em João Pessoa" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                </div>
+                <div class="cidade-info" style="padding: 20px;">
+                    <h3 style="margin: 0 0 10px 0; color: #0056b3;">João Pessoa</h3>
+                    <p style="color: #666; margin: 0 0 15px 0;">45 pontos de mídia</p>
+                    <a href="#" class="btn btn-primary" style="display: inline-block; padding: 8px 20px; background: #0056b3; color: white; text-decoration: none; border-radius: 4px; font-weight: 500; transition: background 0.3s ease;">Ver pontos</a>
+                </div>
+            </div>
+            
+            <!-- Caruaru -->
+            <div class="cidade-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div class="cidade-imagem" style="height: 200px; overflow: hidden;">
+                    <img src="assets/images/caruaru.jpg" alt="Mídia em Caruaru" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                </div>
+                <div class="cidade-info" style="padding: 20px;">
+                    <h3 style="margin: 0 0 10px 0; color: #0056b3;">Caruaru</h3>
+                    <p style="color: #666; margin: 0 0 15px 0;">32 pontos de mídia</p>
+                    <a href="#" class="btn btn-primary" style="display: inline-block; padding: 8px 20px; background: #0056b3; color: white; text-decoration: none; border-radius: 4px; font-weight: 500; transition: background 0.3s ease;">Ver pontos</a>
+                </div>
+            </div>
+            
+            <!-- Campina Grande -->
+            <div class="cidade-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div class="cidade-imagem" style="height: 200px; overflow: hidden;">
+                    <img src="assets/images/campina-grande.jpg" alt="Mídia em Campina Grande" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                </div>
+                <div class="cidade-info" style="padding: 20px;">
+                    <h3 style="margin: 0 0 10px 0; color: #0056b3;">Campina Grande</h3>
+                    <p style="color: #666; margin: 0 0 15px 0;">38 pontos de mídia</p>
+                    <a href="#" class="btn btn-primary" style="display: inline-block; padding: 8px 20px; background: #0056b3; color: white; text-decoration: none; border-radius: 4px; font-weight: 500; transition: background 0.3s ease;">Ver pontos</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Interessado em algum ponto?</h2>
+            <p>Entre em contato e solicite um orçamento personalizado para sua campanha publicitária</p>
+            <a href="contato.html" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> Solicitar Orçamento
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- API do Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8JGyempUB4eN9AikVugjykJZNMzD8TL8&callback=initMap&libraries=visualization" async defer></script>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // Carrega automaticamente o header e footer
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carrega o header
+            fetch("assets/includes/header.html")
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById("header").innerHTML = data;
+                    // Adiciona a classe 'active' ao link da página atual
+                    document.querySelectorAll('.menu a').forEach(link => {
+                        if (link.getAttribute('href') === 'pontos.html') {
+                            link.classList.add('active');
+                        }
+                    });
+                    
+                    // Menu mobile
+                    const hamburger = document.querySelector('.hamburger');
+                    const menu = document.querySelector('.menu');
+                    
+                    if (hamburger && menu) {
+                        hamburger.addEventListener('click', () => {
+                            hamburger.classList.toggle('active');
+                            menu.classList.toggle('active');
+                        });
+                        
+                        // Fecha o menu ao clicar em um link
+                        document.querySelectorAll('.menu a').forEach(link => {
+                            link.addEventListener('click', () => {
+                                hamburger.classList.remove('active');
+                                menu.classList.remove('active');
+                            });
+                        });
+                    }
+                });
+
+            // Carrega o footer
+            fetch("assets/includes/footer.html")
+                .then(res => res.text())
+                .then(data => {
+                    const footer = document.getElementById("footer");
+                    if (footer) {
+                        footer.innerHTML = data;
+                    }
+                });
+        });
+
+        // Inicialização do mapa
+        function initMap() {
+            // Coordenadas do centro do mapa (ponto médio entre as cidades)
+            const centro = { lat: -7.5, lng: -36.5 };
+            
+            // Opções do mapa
+            const opcoes = {
+                zoom: 8,
+                center: centro,
+                mapTypeControl: true,
+                streetViewControl: false,
+                styles: [
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#444444"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#f2f2f2"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": 45
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#00cfff"
+                            },
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    }
+                ]
+            };
+            
+            // Criar o mapa
+            const map = new google.maps.Map(document.getElementById('map'), opcoes);
+
+            // Dados para o mapa de calor (pontos em João Pessoa, Caruaru e Campina Grande)
+            const heatmapData = [
+                // João Pessoa
+                {location: new google.maps.LatLng(-7.1195, -34.8450), weight: 2},
+                {location: new google.maps.LatLng(-7.1150, -34.8550), weight: 1},
+                {location: new google.maps.LatLng(-7.1250, -34.8350), weight: 1.5},
+                {location: new google.maps.LatLng(-7.1100, -34.8300), weight: 1.2},
+                
+                // Caruaru
+                {location: new google.maps.LatLng(-8.2840, -35.9700), weight: 1.8},
+                {location: new google.maps.LatLng(-8.2900, -35.9800), weight: 1.3},
+                {location: new google.maps.LatLng(-8.2750, -35.9600), weight: 1.1},
+                
+                // Campina Grande
+                {location: new google.maps.LatLng(-7.2300, -35.8800), weight: 2.2},
+                {location: new google.maps.LatLng(-7.2400, -35.8900), weight: 1.7},
+                {location: new google.maps.LatLng(-7.2200, -35.8700), weight: 1.9}
+            ];
+
+            // Criar o mapa de calor
+            const heatmap = new google.maps.visualization.HeatmapLayer({
+                data: heatmapData,
+                map: map,
+                radius: 50,
+                opacity: 0.8
+            });
+            
+            // Ajustar o gradiente do heatmap
+            const gradient = [
+                'rgba(0, 255, 0, 0)',
+                'rgba(0, 255, 0, 1)',
+                'rgba(255, 255, 0, 1)',
+                'rgba(255, 0, 0, 1)'
+            ];
+            
+            heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+            heatmap.set('maxIntensity', 20);
+            
+            // Dados para o heatmap
+            const heatMapData = [
+                // João Pessoa
+                {location: new google.maps.LatLng(-7.1194958, -34.8450118), weight: 15},
+                {location: new google.maps.LatLng(-7.13, -34.85), weight: 10},
+                {location: new google.maps.LatLng(-7.11, -34.83), weight: 12},
+                
+                // Campina Grande
+                {location: new google.maps.LatLng(-7.230718, -35.881666), weight: 12},
+                {location: new google.maps.LatLng(-7.22, -35.87), weight: 8},
+                {location: new google.maps.LatLng(-7.24, -35.89), weight: 10},
+                
+                // Caruaru
+                {location: new google.maps.LatLng(-8.2849, -35.9704), weight: 10},
+                {location: new google.maps.LatLng(-8.27, -35.96), weight: 7},
+                {location: new google.maps.LatLng(-8.29, -35.98), weight: 8}
+            ];
+            
+            // Array de marcadores das cidades
+            const markers = [
+                {
+                    position: { lat: -7.1194958, lng: -34.8450118 },
+                    title: 'João Pessoa - PB',
+                    content: '<h3>João Pessoa - PB</h3><p>280 pontos disponíveis</p>',
+                    cidade: 'joao-pessoa',
+                    tipo: 'outdoor',
+                    icon: 'red'
+                },
+                {
+                    position: { lat: -7.230718, lng: -35.881666 },
+                    title: 'Campina Grande - PB',
+                    content: '<h3>Campina Grande - PB</h3><p>220 pontos disponíveis</p>',
+                    cidade: 'campina-grande',
+                    tipo: 'painel',
+                    icon: 'green'
+                },
+                {
+                    position: { lat: -8.2849, lng: -35.9704 },
+                    title: 'Caruaru - PE',
+                    content: '<h3>Caruaru - PE</h3><p>200 pontos disponíveis</p>',
+                    cidade: 'caruaru',
+                    tipo: 'led',
+                    icon: 'blue'
+                }
+            ];
+            
+            // Adicionar marcadores ao mapa
+            markers.forEach(markerData => {
+                const marker = new google.maps.Marker({
+                    position: markerData.position,
+                    map: map,
+                    title: markerData.title,
+                    icon: {
+                        url: `https://maps.google.com/mapfiles/ms/icons/${markerData.icon}-dot.png`,
+                        scaledSize: new google.maps.Size(32, 32)
+                    }
+                });
+                
+                const infoWindow = new google.maps.InfoWindow({
+                    content: markerData.content
+                });
+                
+                marker.addListener('click', () => {
+                    // Fechar todas as outras janelas de informações
+                    infoWindows.forEach(window => window.close());
+                    // Abrir a janela de informações do marcador clicado
+                    infoWindow.open(map, marker);
+                });
+                
+                infoWindows.push(infoWindow);
+                
+                // Armazenar dados do marcador para filtragem
+                marker.cidade = markerData.cidade;
+                marker.tipo = markerData.tipo;
+                
+                // Esconder todos os marcadores inicialmente
+                marker.setVisible(false);
+            });
+            
+            // Função para filtrar marcadores
+            function filtrarMarcadores() {
+                const cidadeSelecionada = document.getElementById('cidade').value;
+                const tipoSelecionado = document.getElementById('tipo').value;
+                
+                markers.forEach(markerData => {
+                    const marker = markerData.marker;
+                    const mostrar = 
+                        (cidadeSelecionada === 'todas' || markerData.cidade === cidadeSelecionada) &&
+                        (tipoSelecionado === 'todos' || markerData.tipo === tipoSelecionado);
+                    
+                    marker.setVisible(mostrar);
+                });
+                
+                // Atualizar contagem
+                const marcadoresVisiveis = markers.filter(m => m.marker.getVisible()).length;
+                document.getElementById('contagem-pontos').textContent = marcadoresVisiveis;
+            }
+            
+            // Adicionar eventos de filtro
+            document.getElementById('cidade').addEventListener('change', filtrarMarcadores);
+            document.getElementById('tipo').addEventListener('change', filtrarMarcadores);
+            
+            // Inicializar contagem
+            document.getElementById('contagem-pontos').textContent = markers.length;
+            
+            // Função para alternar entre abas de cidades
+            document.querySelectorAll('.cidade-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remover classe ativa de todas as abas
+                    document.querySelectorAll('.cidade-tab').forEach(t => t.classList.remove('ativo'));
+                    // Adicionar classe ativa à aba clicada
+                    this.classList.add('ativo');
+                    
+                    // Filtrar por cidade
+                    const cidade = this.getAttribute('data-cidade');
+                    document.getElementById('cidade').value = cidade;
+                    filtrarMarcadores();
+                });
+            });
+            
+            // Ativar a primeira aba por padrão
+            document.querySelector('.cidade-tab').classList.add('ativo');
+        }
+        
+        // Inicializar o mapa quando a janela carregar
+        window.initMap = initMap;
+    </script>
+</body>
+</html>

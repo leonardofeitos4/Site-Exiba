@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossos Serviços - Exiba Outdoor</title>
-    <meta name="description" content="Conheça nossos serviços de mídia exterior: outdoors, painéis, frontlights, painéis de LED e muito mais.">
+    <title>Serviços - Exiba Outdoor</title>
+    <meta name="description" content="Conheça nossos serviços de mídia exterior. Oferecemos soluções personalizadas para sua marca se destacar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,29 +13,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <h1>Exiba<span>Outdoor</span></h1>
-                </a>
-            </div>
-            <nav class="nav">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="servicos.html" class="active">Serviços</a></li>
-                    <li><a href="pontos.html">Pontos</a></li>
-                    <li><a href="sobre.html">Sobre Nós</a></li>
-                    <li><a href="contato.html" class="btn btn-primary">Solicitar Orçamento</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <div id="header"></div>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -318,41 +296,44 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Exiba<span>Outdoor</span></h3>
-                    <p>Sua marca em evidência nos melhores pontos do Nordeste</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Links Rápidos</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="servicos.html">Serviços</a></li>
-                        <li><a href="pontos.html">Pontos</a></li>
-                        <li><a href="sobre.html">Sobre Nós</a></li>
-                        <li><a href="contato.html">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contato</h4>
-                    <p><i class="fas fa-phone"></i> (83) 99999-9999</p>
-                    <p><i class="fas fa-envelope"></i> contato@exibaoutdoor.com.br</p>
-                    <p><i class="fas fa-map-marker-alt"></i> João Pessoa - PB</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Exiba Outdoor. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer"></div>
 
     <script src="js/main.js"></script>
+    <script>
+        // Carrega automaticamente o header
+        fetch("assets/includes/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+                // Adiciona a classe 'active' ao link da página atual
+                document.querySelectorAll('.menu a').forEach(link => {
+                    if (link.getAttribute('href') === 'servicos.html') {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Menu mobile
+                const hamburger = document.querySelector('.hamburger');
+                const menu = document.querySelector('.menu');
+                
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    menu.classList.toggle('active');
+                });
+                
+                // Fecha o menu ao clicar em um link
+                document.querySelectorAll('.menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        menu.classList.remove('active');
+                    });
+                });
+            });
+
+        // Carrega automaticamente o footer
+        fetch("assets/includes/footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer").innerHTML = data);
+    </script>
 </body>
 </html>
