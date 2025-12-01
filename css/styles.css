@@ -302,6 +302,7 @@ img {
     margin-bottom: 50px;
     position: relative;
     padding-bottom: 15px;
+    padding-top: 80px;
 }
 
 .section-title::after {
@@ -527,7 +528,7 @@ img {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 80px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #b3b3b3;
     font-size: 0.9rem;
