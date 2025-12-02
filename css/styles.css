@@ -1,6 +1,6 @@
 /* Reset e Estilos Globais */
 :root {
-    --primary-color: #0056b3;
+    --primary-color: #060e38;
     --secondary-color: #003366;
     --accent-color: #00a8e8;
     --dark-color: #1a1a1a;
@@ -112,7 +112,7 @@ img {
 
 /* Header */
 .header {
-  background: #017d99;
+  background: #060e38;
   padding: 15px 30px;
   position: fixed;
   width: 100%;
@@ -240,32 +240,111 @@ img {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
-    min-height: 700px;
-    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(125, 125, 125, 0.6)), url('../img/hero-bg.jpg') no-repeat center center/cover;
+    position: relative;
+    width: 100%;
+    height: 100vh; /* ocupa a tela inteira */
+    overflow: hidden;
+}
+.hero-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    text-align: center;
-    color: var(--white);
-    padding-top: 80px;
 }
-
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
     animation: fadeInUp 1s ease;
 }
 
-.hero-content p {
-    font-size: 1.5rem;
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden;
+}
+
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -100;
+    filter: brightness(0.5); /* Ajuste o valor: 0.5 = 50% de brilho */
+}
+
+.overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+}
+
+.hero-text p {
+    font-size: 18px;
+    line-height: 1.5;
     margin-bottom: 30px;
+}
+
+
+
+.hero-text .btn-primary {
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+.hero-content h1 {
+    font-size: 1.5rem;
+    color: #FFD700; /* Amarelo */
+    margin-bottom: 15px;
     animation: fadeInUp 1s ease 0.2s;
     animation-fill-mode: both;
+}
+
+.hero-content p:first-of-type {
+    font-size: 5rem; /* Maior */
+    color: #ffffff; /* Branco */
+    margin-bottom: 5px;
+    font-weight: bold;
+    animation: fadeInUp 1s ease 0.3s;
+    animation-fill-mode: both;
+}
+
+.hero-content p:nth-of-type(2) {
+    font-size: 1.5rem; /* Mesmo tamanho do h1 */
+    color: #f2f2f2; /* Amarelo */
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease 0.4s;
+    animation-fill-mode: both;
+}
+
+.hero-content .btn {
+    animation: fadeInUp 1s ease 0.5s;
+    animation-fill-mode: both;
+}
+
+.hero-content .hero-text{
+   
+    margin-top: 300px;
+    text-align: center;
 }
 
 .hero-content .btn {
     animation: fadeInUp 1s ease 0.4s;
     animation-fill-mode: both;
+    margin-top: 0px;  
+    display: inline-block;
 }
 
 /* Serviços em Destaque */
@@ -363,116 +442,73 @@ img {
 }
 
 /* Por que Escolher Nossos Serviços */
-.porque-nos {
-    padding: 80px 0;
-    background-color: var(--light-color);
-    position: relative;
-    overflow: hidden;
+/* Container principal: título à esquerda, timeline à direita */
+.timeline-horizontal {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  position: relative;
+  padding: 40px 0;
 }
 
-.vantagens-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-    position: relative;
-    z-index: 2;
+/* Esquerda - Título */
+.timeline-left {
+  flex: 1;
 }
 
-.vantagem-card {
-    background: var(--white);
-    padding: 40px 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: all 0.5s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+.timeline-left .section-title {
+  font-size: 60px;
+  font-weight: 800;
 }
 
-.vantagem-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    opacity: 0;
-    z-index: -1;
-    transition: all 0.5s ease;
+/* Direita - Timeline vertical */
+.timeline-right {
+  flex: 1;
+  position: relative;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.vantagem-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+/* Linha vertical */
+.timeline-right::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 15px;
+  width: 4px;
+  background-color: #00cfff;
 }
 
-.vantagem-card:hover::before {
-    opacity: 1;
+/* Cada ponto */
+.timeline-point {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
 }
 
-.vantagem-card:hover .vantagem-icon,
-.vantagem-card:hover h3,
-.vantagem-card:hover p {
-    color: var(--white);
+/* Bolinha com número */
+.number {
+  position: absolute;
+  left: -5px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border: 3px solid #00cfff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
-.vantagem-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 25px;
-    background: rgba(0, 86, 179, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: var(--primary-color);
-    transition: all 0.5s ease;
-}
-
-.vantagem-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: var(--dark-color);
-    transition: all 0.5s ease;
-}
-
-.vantagem-card p {
-    color: var(--gray-color);
-    transition: all 0.5s ease;
-    margin-bottom: 0;
-}
-
-/* Animações */
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-.vantagem-card {
-    animation: float 6s ease-in-out infinite;
-}
-
-.vantagem-card:nth-child(2) {
-    animation-delay: 0.5s;
-}
-
-.vantagem-card:nth-child(3) {
-    animation-delay: 1s;
-}
-
-.vantagem-card:nth-child(4) {
-    animation-delay: 1.5s;
+/* Texto */
+.text {
+  margin-left: 40px;
+  font-size: 25px;
+  color: #333;
 }
 
 /* Destaques */
@@ -539,8 +575,11 @@ img {
 
 .midia-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px;
 }
 
 .midia-card {
@@ -822,7 +861,19 @@ img {
     }
 }
 
+/* Responsividade para o grid de mídia */
+@media (max-width: 1024px) {
+    .midia-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
+    .midia-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
     .hero {
         min-height: 600px;
     }
