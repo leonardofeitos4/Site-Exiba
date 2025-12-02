@@ -34,8 +34,17 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 100 20%;
+    padding-top: 1%;
 }
+
+.contato-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
@@ -80,7 +89,7 @@ img {
 }
 
 .btn-primary {
-    padding: 12px 25px;
+    padding: 12px px;
     transition: all 0.3s ease;
 }
 
@@ -103,7 +112,7 @@ img {
 
 /* Header */
 .header {
-  background: #0d0d0d;
+  background: #017d99;
   padding: 15px 30px;
   position: fixed;
   width: 100%;
@@ -128,6 +137,11 @@ img {
   font-weight: bold;
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
+}
+.logo img {
+  height: 60px;
+  width: auto;
+  display: block;
 }
 
 .menu {
@@ -228,7 +242,7 @@ img {
 .hero {
     height: 100vh;
     min-height: 700px;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/hero-bg.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(125, 125, 125, 0.6)), url('../img/hero-bg.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     text-align: center;
@@ -252,6 +266,213 @@ img {
 .hero-content .btn {
     animation: fadeInUp 1s ease 0.4s;
     animation-fill-mode: both;
+}
+
+/* Serviços em Destaque */
+.servicos-destaque {
+    padding: 80px 0;
+    background-color: var(--light-color);
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.servico-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.servico-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.servico-card p {
+    color: var(--gray-color);
+    margin-bottom: 0;
+}
+
+/* Mídia Kit */
+.midia-kit {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.midia-kit-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.midia-kit-imagem {
+    flex: 1;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+}
+
+.midia-kit-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.midia-kit-conteudo {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.midia-kit-conteudo h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.midia-kit-conteudo p {
+    margin-bottom: 30px;
+    color: var(--gray-color);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.midia-kit .btn {
+    align-self: flex-start;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.midia-kit .btn i {
+    font-size: 1.2rem;
+}
+
+/* Por que Escolher Nossos Serviços */
+.porque-nos {
+    padding: 80px 0;
+    background-color: var(--light-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.vantagens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.vantagem-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.vantagem-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s ease;
+}
+
+.vantagem-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.vantagem-card:hover::before {
+    opacity: 1;
+}
+
+.vantagem-card:hover .vantagem-icon,
+.vantagem-card:hover h3,
+.vantagem-card:hover p {
+    color: var(--white);
+}
+
+.vantagem-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    background: rgba(0, 86, 179, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+    transition: all 0.5s ease;
+}
+
+.vantagem-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+    transition: all 0.5s ease;
+}
+
+.vantagem-card p {
+    color: var(--gray-color);
+    transition: all 0.5s ease;
+    margin-bottom: 0;
+}
+
+/* Animações */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.vantagem-card {
+    animation: float 6s ease-in-out infinite;
+}
+
+.vantagem-card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.vantagem-card:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.vantagem-card:nth-child(4) {
+    animation-delay: 1.5s;
 }
 
 /* Destaques */
@@ -336,19 +557,29 @@ img {
 }
 
 .midia-icon {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     margin: 0 auto 20px;
-    background-color: rgba(0, 86, 179, 0.1);
+    background-color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f0f0f0;
+}
+
+.midia-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .midia-icon i {
     font-size: 2rem;
     color: var(--primary-color);
+    display: none; /* Esconde o ícone quando há uma imagem */
 }
 
 .midia-card h3 {
@@ -625,4 +856,35 @@ img {
     .btn-lg {
         padding: 12px 25px;
     }
+}
+
+/* Botão Flutuante do WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-float i {
+    margin-top: 2px;
 }
