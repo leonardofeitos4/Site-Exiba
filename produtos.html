@@ -15,9 +15,8 @@
         .produtos-hero {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 100px 0 60px;
-            text-align: center;
-        }
+            padding: 100px 0 1cqi;
+            text-align: center;        }
 
         .produtos-hero h1 {
             font-size: 2.8rem;
@@ -37,25 +36,52 @@
             gap: 20px;
             margin-bottom: 40px;
             flex-wrap: wrap;
+            margin-top: 50px;
         }
 
         .categoria-btn {
             padding: 10px 25px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.514); /* cor padrão transparente */
             border: none;
             border-radius: 50px;
-            color: white;
+            color: #FFD700;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Poppins', sans-serif;
             font-size: 1rem;
+            min-width: 100px;
+            text-align: center;
         }
 
-        .categoria-btn.active,
-        .categoria-btn:hover {
-            background: var(--accent-color);
-            transform: translateY(-2px);
+        .categoria-btn.active {
+            background: #003366; /* cor do botão ativo */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
+
+        .categoria-btn:hover {
+            background: #003366; /* cor do hover */
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .categoria-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+                min-width: 90px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .categorias {
+                flex-direction: column;
+                align-items: center;
+            }
+            .categoria-btn {
+                width: 80%;
+                text-align: center;
+            }
+        }
+
 
         .produtos-grid {
             display: grid;
@@ -184,69 +210,118 @@
         <button class="categoria-btn active" data-categoria="todos">Todos</button>
         <button class="categoria-btn" data-categoria="outdoor">Outdoors</button>
         <button class="categoria-btn" data-categoria="painel">Painéis</button>
-        <button class="categoria-btn" data-categoria="digital">Mídia Digital</button>
-        <button class="categoria-btn" data-categoria="especial">Soluções Especiais</button>
+        <button class="categoria-btn" data-categoria="digital">Leds</button>
+        <button class="categoria-btn" data-categoria="front">Front</button>
+
     </div>
 
     <!-- Grid de Produtos -->
     <div class="produtos-grid">
         <!-- Outdoor 1 -->
         <div class="produto-card" data-categoria="outdoor">
-            <img src="assets/images/produtos/outdoor-1.jpg" alt="Outdoor Padrão" class="produto-imagem">
+            <img src="assets/img/outdoor.jpeg" alt="Outdoor Padrão" class="produto-imagem">
             <div class="produto-info">
-                <h3>Outdoor Padrão</h3>
-                <p>Estruturas de alta resistência com excelente visibilidade em vias de grande circulação.</p>
-                <a href="#" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                <h3>Outdoor</h3>
+                <p>Tipo de mídia exterior constituído por uma placa em
+                estrutura de madeira ou em tubos de ferro patente
+                revestida com chapa ou folha de zinco.</p>
+                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
 
         <!-- Painel 1 -->
-        <div class="produto-card" data-categoria="painel">
-            <img src="assets/images/produtos/painel-1.jpg" alt="Painel Backlight" class="produto-imagem">
+        <div class="produto-card" data-categoria="outdoor">
+            <img src="assets/img/outdoor.jpeg" alt="Painel Backlight" class="produto-imagem">
             <div class="produto-info">
-                <h3>Painel Backlight</h3>
-                <p>Iluminação interna para maior visibilidade noturna e impacto visual impressionante.</p>
-                <a href="#" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                <h3>Outdoor Duplo</h3>
+                <p>Tipo de mídia exterior constituído por uma placa em
+                estrutura de madeira ou em tubos de ferro patente
+                revestida com chapa ou folha de zinco.</p>
+                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
 
         <!-- Digital 1 -->
-        <div class="produto-card" data-categoria="digital">
-            <img src="assets/images/produtos/digital-1.jpg" alt="Painel Digital" class="produto-imagem">
-            <div class="produto-info">
-                <h3>Painel Digital</h3>
-                <p>Tecnologia LED de alta resolução para exibição dinâmica de conteúdo em tempo real.</p>
-                <a href="#" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-
-        <!-- Outdoor 2 -->
         <div class="produto-card" data-categoria="outdoor">
-            <img src="assets/images/produtos/outdoor-2.jpg" alt="Outdoor Duplo" class="produto-imagem">
+            <img src="assets/img/outdoor.jpeg" alt="Painel Digital" class="produto-imagem">
             <div class="produto-info">
-                <h3>Outdoor Duplo</h3>
-                <p>Estrutura com faces opostas para máxima visibilidade em cruzamentos estratégicos.</p>
-                <a href="#" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                <h3>Outdoor Triplo</h3>
+                <p>Tipo de mídia exterior constituído por uma placa em
+                estrutura de madeira ou em tubos de ferro patente
+                revestida com chapa ou folha de zinco.</p>
+                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
-
         <!-- Painel 2 -->
         <div class="produto-card" data-categoria="painel">
-            <img src="assets/images/produtos/painel-2.jpg" alt="Painel Frontlight" class="produto-imagem">
+            <img src="assets/img/outdoor.jpeg" alt="Painel Frontlight" class="produto-imagem">
             <div class="produto-info">
-                <h3>Painel Frontlight</h3>
-                <p>Iluminação frontal para destacar sua mensagem com máxima nitidez.</p>
-                <a href="#" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                <h3>Painel Rodoviário</h3>
+                <p>Estão estrategicamente localizados em pontos de
+                    grande visibilidade, instalados nas principais
+                    rodovias da Paraíba e Pernambuco.
+                    Sua medida é de 9 X 6 metros, aplicação de lona e
+                    fixação feita por grampos aplicados na lona.
+                    O período de veiculação de um painel é de no
+                    mínimo 30 dias.
+                    É um excelente veículo de mídia exterior, com ótimo
+                    impacto visual e visto por milhares de pessoas, o
+                    que o torna perfeito para anunciar qualquer marca,
+                    produto ou serviço. Confira diversas opções.
+                    </p>
+                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
 
         <!-- Especial 1 -->
-        <div class="produto-card" data-categoria="especial">
-            <img src="assets/images/produtos/especial-1.jpg" alt="Projeto Personalizado" class="produto-imagem">
+        <div class="produto-card" data-categoria="painel">
+            <img src="assets/img/outdoor.jpeg" alt="Projeto Personalizado" class="produto-imagem">
             <div class="produto-info">
-                <h3>Projeto Personalizado</h3>
+                <h3>Mega Painel</h3>
+                <p>Painel em lona 16x10m, com iluminação frontalcom refletores.</p>
+                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="produto-card" data-categoria="especial">
+            <img src="assets/img/empena.jpeg" alt="Empena" class="produto-imagem">
+            <div class="produto-info">
+                <h3>Empena</h3>
                 <p>Soluções sob medida para atender necessidades específicas da sua campanha.</p>
-                <a href="#" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="produto-card" data-categoria="digital">
+            <img src="assets/img/Led-Horizontal.jpeg" alt="Projeto Personalizado" class="produto-imagem">
+            <div class="produto-info">
+                <h3>LED Horizontal</h3>
+                <p>Uma mídia que oferece um grande retorno visual, devido à iluminação e tecnologiaempregada.
+                O crescimento no volume de automóveis nas ruas é visível a cada dia, o fluxo entre as
+                cidades tem se tornado cada vez maior, valorizando o Painel de LED.
+                Permite o uso de mídias programaticas, veculando artes de acordo com o público e o horário,
+                sendo muito mais rápido o início de uma nova campanha ou alteração.</p>
+                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="produto-card" data-categoria="digital">
+            <img src="assets/img/Led-Vertical.jpeg" alt="Projeto Personalizado" class="produto-imagem">
+            <div class="produto-info">
+                <h3>LED Vertical </h3>
+                <p>Uma mídia que oferece um grande retorno visual, devido à iluminação e tecnologiaempregada.
+                O crescimento no volume de automóveis nas ruas é visível a cada dia, o fluxo entre as
+                cidades tem se tornado cada vez maior, valorizando o Painel de LED.
+                Permite o uso de mídias programaticas, veculando artes de acordo com o público e o horário,
+                sendo muito mais rápido o início de uma nova campanha ou alteração.</p>
+                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="produto-card" data-categoria="front">
+            <img src="assets/img/Frontlight.jpeg" alt="Projeto Personalizado" class="produto-imagem">
+            <div class="produto-info">
+                <h3>FrontLight</h3>
+                <p>Painel com iluminação frontal e que veicula
+                campanhas publicitárias para serem consumidas a
+                qualquer horário do dia.</p>
+                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
@@ -255,13 +330,23 @@
     <section class="grafica-info">
         <div class="grafica-container">
             <div class="grafica-imagem">
-                <img src="assets/images/grafica.jpg" alt="Nossa Gráfica">
+                <img src="assets/img/Equipe.png" alt="Nossa Gráfica">
             </div>
             <div class="grafica-texto">
                 <h2>Nossa Estrutura Gráfica</h2>
-                <p>Contamos com uma estrutura gráfica completa e moderna, equipada com as mais avançadas tecnologias de impressão em grande formato.</p>
-                <p>Nossa equipe altamente qualificada garante a mais alta qualidade na produção de peças gráficas, desde a criação até a instalação final.</p>
-                <p>Utilizamos materiais de primeira linha e técnicas avançadas para garantir durabilidade e impacto visual em todos os nossos produtos.</p>
+                <p>Contamos com gráfica própria,
+                equipada com impressoras digitais de
+                alta qualidade para transformar seu
+                anúncio em realidade. Buscamos
+                constantemente a inovação para a
+                melhor produção em papel, lona,
+                adesivo e projetos especiais. Prezamos
+            sempre pelo mais alto padrão de
+            produção e qualidade, desde a escolha
+            dos melhores insumos até o cuidado e
+            atenção no processo de produção e
+            montagem.</p>
+                
             </div>
         </div>
     </section>
@@ -318,5 +403,8 @@
             });
         });
     </script>
+    <a href="https://wa.me/5583999246149?text=Olá!%20Vim%20pelo%20o%20site" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bissemana - Exiba Outdoor</title>
+    <meta name="description" content="Confira nossa programação de bissemana e garanta seu espaço publicitário.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .bissemana-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .bissemana-container h1 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+        
+        .bissemana-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .back-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <div class="bissemana-container">
+        <h1>Programação Bissemana</h1>
+        <img src="assets/img/Bissemana.jpeg" alt="Programação Bissemana" class="bissemana-image">
+        
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Carrega o header e footer
+        $(function(){
+            $("#header").load("assets/includes/header.html");
+            $("#footer").load("assets/includes/footer.html");
+        });
+    </script>
+</body>
+</html>
