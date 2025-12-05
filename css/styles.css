@@ -555,6 +555,18 @@ img {
     line-height: 1.6;
 }
 
+
+
+.Parcerias img {
+    width: 55%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    margin-top: -3%;
+}
+
+
 /* Sobre Linha do tempo */
 
 /* Container geral */

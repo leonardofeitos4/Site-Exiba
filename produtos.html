@@ -143,42 +143,47 @@
         .grafica-info {
             background: var(--light-color);
             padding: 60px 0;
-            margin-top: 60px;
+            margin-top: 0px;
+            width: 100%;
+        }
+
+        /* CONTAINER CORRIGIDO — AGORA FUNCIONA */
+        .grafica-info {
+            background: var(--light-color);
+            padding: 60px 0;
+            width: 100%;
         }
 
         .grafica-container {
-            max-width: 1000px;
+            max-width: 1200px; /* deixa mais largo */
             margin: 0 auto;
             padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+
+            display: flex;
             align-items: center;
+            justify-content: flex-start; /* puxa tudo pra esquerda */
+            gap: 80px; /* espaço entre imagem e texto */
         }
 
         .grafica-imagem {
-            border-radius: 10px;
+            width: 520px;        /* tamanho perfeito da imagem */
+            height: 520px;       /* deixa realmente quadrada */
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;      /* impede de encolher */
         }
 
         .grafica-imagem img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .grafica-texto h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 2rem;
+        .grafica-texto {
+            max-width: 700px; /* controla largura do texto */
         }
 
-        .grafica-texto p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-            color: var(--dark-color);
-        }
+
 
         @media (max-width: 768px) {
             .grafica-container {
@@ -231,7 +236,7 @@
 
         <!-- Painel 1 -->
         <div class="produto-card" data-categoria="outdoor">
-            <img src="assets/img/outdoor.jpeg" alt="Painel Backlight" class="produto-imagem">
+            <img src="assets/img/outdoor-duplo.jpeg" alt="Painel Backlight" class="produto-imagem">
             <div class="produto-info">
                 <h3>Outdoor Duplo</h3>
                 <p>Tipo de mídia exterior constituído por uma placa em
@@ -330,7 +335,7 @@
     <section class="grafica-info">
         <div class="grafica-container">
             <div class="grafica-imagem">
-                <img src="assets/img/Equipe.png" alt="Nossa Gráfica">
+                <img src="assets/img/grafica.jpeg" alt="Nossa Gráfica">
             </div>
             <div class="grafica-texto">
                 <h2>Nossa Estrutura Gráfica</h2>
