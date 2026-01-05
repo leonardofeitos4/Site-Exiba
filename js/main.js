@@ -451,3 +451,192 @@ function initMap() {
         });
     });
 }
+
+// ==== WHATSAPP LEAD MODAL ====
+
+function abrirZapModal(){
+    document.getElementById("zapOverlay").style.display = "flex";
+}
+
+function fecharZapModal(){
+    document.getElementById("zapOverlay").style.display = "none";
+}
+
+function enviarLead(){
+    const nome = document.getElementById("z_nome").value;
+    const email = document.getElementById("z_email").value;
+    const tel = document.getElementById("z_tel").value;
+    const emp = document.getElementById("z_empresa").value;
+    const cargo = document.getElementById("z_cargo").value;
+
+    if(!nome || !email || !tel){
+        alert("Preencha os campos obrigatórios");
+        return;
+    }
+
+    const msg =
+      `Olá! Vim pelo site.%0A%0A`+
+      `Nome: ${nome}%0A`+
+      `Email: ${email}%0A`+
+      `Telefone: ${tel}%0A`+
+      `Empresa: ${emp}%0A`+
+      `Cargo: ${cargo}`;
+
+    window.open("https://wa.me/5583999246149?text="+msg, "_blank");
+
+    const emails = [
+  "suportedados@exiba.com.br",
+  "marketing@exiba.com.br",
+  "gerencia@exiba.com.br"
+];
+
+emails.forEach(emailDestino => {
+  fetch(`https://formsubmit.co/ajax/${emailDestino}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      Nome: nome,
+      Email: email,
+      Telefone: tel,
+      Empresa: emp,
+      Cargo: cargo
+    })
+  });
+});
+
+
+    fecharZapModal();
+}
+
+// =====================================================
+// MENU MOBILE - FUNCIONALIDADE HAMBURGER
+// Adicione este código ao main.js ou no final de cada HTML
+// =====================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Aguarda o carregamento do header
+    setTimeout(function() {
+        
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+        const menuLinks = document.querySelectorAll('.menu a');
+        
+        // Verifica se os elementos existem
+        if (hamburger && menu) {
+            
+            // Toggle do menu ao clicar no hamburger
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                hamburger.classList.toggle('active');
+                menu.classList.toggle('active');
+                
+                // Previne scroll quando menu está aberto
+                if (menu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Fecha o menu ao clicar em um link
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    menu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Fecha o menu ao clicar fora dele
+            document.addEventListener('click', function(e) {
+                if (menu.classList.contains('active')) {
+                    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        menu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+            
+            // Fecha o menu ao redimensionar para desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    hamburger.classList.remove('active');
+                    menu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+        
+    }, 500); // Aguarda 500ms para garantir que o header foi carregado
+});
+
+// =====================================================
+// MODAL WHATSAPP
+// =====================================================
+
+function abrirZapModal() {
+    document.getElementById('zapOverlay').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function fecharZapModal() {
+    document.getElementById('zapOverlay').style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+function enviarLead() {
+    const nome = document.getElementById('z_nome').value.trim();
+    const email = document.getElementById('z_email').value.trim();
+    const tel = document.getElementById('z_tel').value.trim();
+    const empresa = document.getElementById('z_empresa').value.trim();
+    const cargo = document.getElementById('z_cargo').value.trim();
+    
+    // Validação básica
+    if (!nome || !email || !tel || !empresa || !cargo) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+    }
+    
+    // Validação de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Por favor, insira um e-mail válido.');
+        return;
+    }
+    
+    // Monta a mensagem para o WhatsApp
+    const mensagem = `Olá! Vim pelo site.%0A%0A` +
+                    `*Nome:* ${nome}%0A` +
+                    `*Email:* ${email}%0A` +
+                    `*Telefone:* ${tel}%0A` +
+                    `*Empresa:* ${empresa}%0A` +
+                    `*Cargo:* ${cargo}`;
+    
+    // Número do WhatsApp (ajuste se necessário)
+    const numeroWhatsApp = '5583999246149';
+    
+    // Abre o WhatsApp
+    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
+    
+    // Fecha o modal
+    fecharZapModal();
+    
+    // Limpa os campos
+    document.getElementById('z_nome').value = '';
+    document.getElementById('z_email').value = '';
+    document.getElementById('z_tel').value = '';
+    document.getElementById('z_empresa').value = '';
+    document.getElementById('z_cargo').value = '';
+}
+
+// Fecha o modal ao clicar fora dele
+document.addEventListener('click', function(e) {
+    const overlay = document.getElementById('zapOverlay');
+    if (overlay && e.target === overlay) {
+        fecharZapModal();
+    }
+});

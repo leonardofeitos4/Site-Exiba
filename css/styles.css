@@ -84,7 +84,7 @@ img {
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background-color:#ffd900ad;
     color: var(--white);
 }
 
@@ -289,6 +289,7 @@ img {
 .hero-content {
     text-align: center;
     color: #fff;
+     margin-top:-60px;
 }
 
 .hero-text p {
@@ -457,9 +458,28 @@ img {
 }
 
 .timeline-left .section-title {
-  font-size: 60px;
-  font-weight: 800;
+    font-size: clamp(42px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 420px;
+    margin-bottom: 20px;
+    color: #111;
+    position: relative;
+    margin-top: 160px;
 }
+@media (max-width: 768px) {
+    .timeline-left .section-title {
+        font-size: 36px;
+        max-width: 100%;
+    }
+
+    .timeline-left {
+        margin-bottom: 30px;
+    }
+}
+
+
 
 /* Direita - Timeline vertical */
 .timeline-right {
@@ -968,7 +988,7 @@ img {
     vertical-align: middle;
 }
 .btn-orcamento {
-    background-color: #012b86; /* cor de fundo do botão */
+    background-color: #ffd900ad; /* cor de fundo do botão */
     color: #ffffff; /* cor do texto */
     border: none; 
     transition: all 0.3s ease;
@@ -1083,24 +1103,503 @@ img {
     color: #b3b3b3;
     font-size: 0.9rem;
 }
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 25px;
-    right: 25px;
-    background: #25d366;
+
+
+
+/* ===============================
+   BISSEMANA — ORGANIZAÇÃO GLOBAL
+================================ */
+
+.bissemana-container {
+    max-width: 900px;              /* mais estreito = mais elegante */
+    margin: 90px auto;
+    padding: 0 20px;
+}
+
+
+.bissemana-container h1 {
+    text-align: center;
+    font-size: clamp(34px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 22px;
+}
+.bissemana-container:first-of-type {
+    margin-top: 60px;
+}
+.bissemana-container:first-of-type .bissemana-text {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.bissemana-container h2 {
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.25;
+}
+
+.bissemana-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--gray-color);
+}
+
+
+.bissemana-text p {
+    margin-bottom: 14px;
+}
+
+.bissemana-text ul,
+.bissemana-text {
+    padding-left: 0;
+}
+
+.bissemana-text li {
+    list-style: none;
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+}
+
+.bissemana-text li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+
+/* Imagem do calendário */
+.bissemana-image {
+    display: block;
+    max-width: 100%;
+    margin: 40px auto 0;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+
+/* =========================================
+   FAQ
+========================================= */
+
+.faq {
+    max-width: 900px;
+    margin: 100px auto;
+    padding: 0 20px;
+}
+
+.faq h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-item {
+    max-width: 760px;
+    margin: 0 auto 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+}
+
+.faq-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.bissemana-container:last-of-type {
+    margin-bottom: 120px;
+}
+
+/* =========================================
+   CTA FINAL
+========================================= */
+
+.cta {
+    padding: 80px 20px;
+}
+
+.cta h2 {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    line-height: 1.3;
+}
+
+
+.cta .btn-orcamento {
+    display: inline-block;
+    padding: 14px 40px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* =========================================
+   RESPONSIVO — MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .bissemana-container {
+        margin: 60px auto;
+    }
+
+    .bissemana-container h1 {
+        font-size: 28px;
+    }
+
+    .bissemana-container h2 {
+        font-size: 24px;
+    }
+
+    .faq {
+        margin: 70px auto;
+    }
+
+
+
+    .bissemana-text {
+        font-size: 0.95rem;
+        line-height: 1.65;
+    }
+
+    .faq h2 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    .cta {
+        padding: 70px 20px;
+    }
+
+    .cta h2 {
+        font-size: 24px;
+    }
+
+    .cta .btn-orcamento {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+/* =========================================
+   MOBILE PEQUENO
+========================================= */
+
+@media (max-width: 480px) {
+
+    .bissemana-container h1 {
+        font-size: 24px;
+    }
+
+    .bissemana-container h2 {
+        font-size: 22px;
+    }
+
+    .cta h2 {
+        font-size: 22px;
+    }
+}
+
+/* =====================================================
+   PONTOS — BASE GERAL
+===================================================== */
+
+.page-header {
+    padding: 90px 20px 70px;
+    background: linear-gradient(135deg, #003366, #001a33);
     color: #fff;
-    border-radius: 50%;
-    font-size: 32px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: clamp(34px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+}
+
+.page-header p {
+    max-width: 720px;
+    margin: 0 auto 30px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.page-header .btn {
+    padding: 14px 38px;
+    border-radius: 40px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   MAPA
+===================================================== */
+
+.map-coverage {
+    padding: 90px 0;
+    background: #f8f9fa;
+}
+
+.map-container {
+    position: relative;
+    height: 520px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    background: #fff;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+.map-legend {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 260px;
+    background: #fff;
+    padding: 18px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    z-index: 10;
+}
+
+.map-legend h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #003366;
+}
+
+.city-marker {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease-in-out;
-    animation: whatsapp-bounce 5s infinite;
+    gap: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: #333;
 }
+
+.marker-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+
+/* =====================================================
+   PONTO ESTRATÉGICO
+===================================================== */
+
+.pontos-estrategicos {
+    max-width: 900px;
+    margin: 100px auto;
+    padding: 0 20px;
+}
+
+.pontos-estrategicos h2 {
+    font-size: clamp(28px, 3vw, 34px);
+    font-weight: 800;
+    margin-bottom: 18px;
+    color: #003366;
+}
+
+.pontos-estrategicos p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.pontos-estrategicos ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.pontos-estrategicos li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.pontos-estrategicos li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: #003366;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   CIDADES
+===================================================== */
+
+.pontos-midia {
+    padding: 90px 0;
+    margin-top: -200px;
+    background: #ffffff;
+}
+
+.cidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.cidade-card {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cidade-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+.cidade-imagem {
+    position: relative;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+.cidade-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.8),
+        rgba(0,0,0,0.3)
+    );
+}
+
+.cidade-conteudo {
+    position: absolute;
+    bottom: 0;
+    padding: 28px;
+    color: #fff;
+    z-index: 2;
+}
+
+.cidade-conteudo h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.cidade-conteudo p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.95;
+}
+
+
+/* =====================================================
+   CTA FINAL
+===================================================== */
+
+.cta {
+    background: #003366;
+    color: #fff;
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.cta h2 {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.cta .btn-orcamento {
+    padding: 14px 40px;
+    border-radius: 40px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width:768px){
+
+/* Remove buraco no topo */
+.page-header{
+  margin-top:-30px!important;
+  padding:60px 16px 50px!important;
+}
+
+/* Trava leitura da seção */
+.pontos-estrategicos{
+  width:100%!important;
+  margin:0 auto 40px!important;
+  padding:40px 16px!important;
+}
+
+/* Centraliza título e texto */
+.pontos-estrategicos h2{
+  text-align:center;
+  margin-bottom:20px!important;
+}
+
+.pontos-estrategicos p,
+.pontos-estrategicos ul{
+  padding:0!important;
+  margin:0 auto 20px!important;
+  max-width:100%;
+}
+
+/* Evita colar em "Cidades" */
+.pontos-midia{
+  margin-top:0!important;
+  padding-top:30px!important;
+}
+
+/* CTA */
+.cta{
+  padding:60px 16px!important;
+}
+
+}
+
+
+@media (max-width: 480px) {
+
+    .map-legend {
+        display: none;
+    }
+
+    .cidade-imagem {
+        height: 260px;
+    }
+}
+
 
 @keyframes whatsapp-bounce {
     0% { transform: translateY(0); }
@@ -1214,7 +1713,9 @@ img {
     }
 }
 
-/* Botão zap */
+/* ==============================
+   BOTÃO WHATSAPP FLUTUANTE
+============================== */
 .whatsapp-float {
     position: fixed;
     width: 60px;
@@ -1232,6 +1733,21 @@ img {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     transition: transform 0.2s ease-in-out;
     animation: whatsapp-bounce 2s infinite;
+    z-index: 9999;
+}
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+}
+.whatsapp-float i {
+    margin-top: 2px;
+}
+/* DESLOCAR MODAL PARA BAIXO */
+@media (min-width: 768px){
+    .zap-overlay{
+        align-items: flex-start;
+        padding-top: 250px;   /
+    }
 }
 
 @keyframes whatsapp-bounce {
@@ -1241,12 +1757,1404 @@ img {
     100% { transform: translateY(0); }
 }
 
-.whatsapp-float:hover {
-    background-color: #128C7E;
-    transform: scale(1.1);
+/* ==============================
+   MODAL DE CAPTURA
+============================== */
+.zap-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
 }
 
-.whatsapp-float i {
-    margin-top: 2px;
+/* Desktop */
+@media (min-width: 768px){
+    .zap-overlay{
+        justify-content: flex-end;
+        padding-right: 25px;
+    }
 }
+
+/* Modal */
+.zap-modal{
+    width: 360px;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    animation: zapSlide .35s ease;
+}
+
+/* Mobile */
+@media (max-width: 767px){
+    .zap-modal{
+        width: 92%;
+    }
+}
+
+/* Cabeçalho */
+.zap-header{
+    background: #1e6b5c;
+    color: #fff;
+    padding: 14px;
+    font-size: 14px;
+    position: relative;
+}
+.zap-header span{
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Campos */
+.zap-modal input{
+    width: calc(100% - 12px);
+    margin: 6px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Botão */
+.zap-modal button{
+    width: calc(100% - 12px);
+    margin: 10px 6px 12px;
+    padding: 13px;
+    background: #25d366;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.zap-modal button:hover{
+    background:#1ebe5d;
+}
+
+/* Animação */
+@keyframes zapSlide{
+    from{ transform: translateY(40px); opacity:0; }
+    to{ transform: translateY(0); opacity:1; }
+}
+
+
+
+/* ===============================
+   O QUE FAZEMOS — OPERAÇÃO EXIBA
+================================ */
+
+.o-que-fazemos {
+    padding: -10px;
+    background: #ffffff;
+}
+
+.o-que-fazemos .section-header {
+    max-width: 900px;
+    margin: 0 auto 70px auto; /* CENTRALIZA O BLOCO */
+    text-align: center;       /* CENTRALIZA O TEXTO */
+}
+
+.o-que-fazemos .section-title {
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+
+
+.o-que-fazemos .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--gray-color);
+    line-height: 1.7;
+}
+
+.servicos-operacao {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 80px;
+}
+
+.servico-item h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--primary-color);
+}
+
+.servico-item p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--gray-color);
+    max-width: 520px;
+}
+
+/* ===============================
+   EXECUÇÃO DE EXCELÊNCIA
+================================ */
+
+.execucao-excelencia {
+    padding: 90px 0;
+    background: var(--light-color);
+}
+
+.execucao-excelencia .section-title {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+.lista-excelencia {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+}
+
+.lista-excelencia li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+    color: var(--gray-color);
+}
+
+.lista-excelencia li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #FFD700; /* cor institucional */
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+
+    .servicos-operacao {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .o-que-fazemos {
+        padding: 70px 0;
+    }
+
+    .execucao-excelencia {
+        padding: 70px 0;
+    }
+}
+
+
+/* ======================================================
+   INDEX — RESPONSIVO MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+
+    /* =====================
+       CONTAINER GLOBAL
+    ====================== */
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* =====================
+       HERO — AJUSTE MOBILE (VÍDEO + TEXTO)
+    ====================== */
+    .hero {
+        position: relative;
+        min-height: 100vh;
+        padding-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        align-items:flex-start
+    }
+
+    .hero-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(13, 30, 119, 0.123);
+        z-index: 2;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        padding: 0 16px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-text {
+        max-width: 300px;
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    .hero-text h1 {
+        font-size: 22px;
+        line-height: 1.15;  /* ⚠️ CORRIGIDO (era -1.15) */
+        font-weight: 800;
+        margin-bottom: 10px;
+        letter-spacing: -0.01em;
+        word-break: normal;
+    }
+
+    .hero-text p {
+        font-size: 0.85rem;
+        line-height: 1.45;
+        margin-bottom: 18px;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-text .btn {
+        width: 100%;
+        max-width: 240px;
+        margin:22px auto 0;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        display: inline-block;
+    }
+
+    /* =====================
+       DESTAQUES / NÚMEROS
+    ====================== */
+    .destaques {
+        padding: 70px 0;
+    }
+
+    .destaques-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .destaque-card {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .destaque-card i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .destaque-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .destaque-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* =====================
+       TEXTO INSTITUCIONAL CURTO
+    ====================== */
+    .institucional-curto {
+        padding: 50px 0;
+    }
+
+    .institucional-curto p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    /* =====================
+       POR QUE INVESTIR (TIMELINE)
+    ====================== */
+    .investir-midia {
+        padding: 80px 0 60px;
+    }
+
+    .timeline-horizontal {
+        flex-direction: column;
+    }
+
+    .timeline-left {
+        padding: 0;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .timeline-left .section-title {
+        font-size: 32px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .timeline-left .section-title::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .timeline-right {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .timeline-point {
+        padding-left: 0;
+        margin-bottom: 26px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .timeline-point .number {
+        margin-bottom: 8px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .timeline-point .text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* =====================
+       POR QUE ESCOLHER (VANTAGENS)
+    ====================== */
+    .exiba-porque-nos {
+        padding: 70px 0;
+    }
+
+    .exiba-section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .exiba-section-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .exiba-section-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .exiba-vantagens-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .exiba-vantagem-card {
+        text-align: center;
+        padding: 25px 20px;
+    }
+
+    .exiba-vantagem-icon {
+        margin-bottom: 15px;
+    }
+
+    .exiba-vantagem-icon i {
+        font-size: 2.5rem;
+    }
+
+    .exiba-vantagem-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+    }
+
+    .exiba-vantagem-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* =====================
+       CLIENTES/PARCERIAS
+    ====================== */
+    .Parcerias {
+        padding: 70px 0;
+    }
+
+    .parcerias {
+        text-align: center;
+    }
+
+    .parcerias-title {
+        margin-bottom: 30px;
+    }
+
+    .parcerias-title .section-title {
+        font-size: 28px;
+    }
+
+    .parcerias img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* =====================
+       CTA FINAL
+    ====================== */
+    .cta {
+        padding: 70px 0;
+        text-align: center;
+    }
+
+    .cta h2 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+        margin-bottom: 20px;
+    }
+
+    .cta p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+
+    .cta .btn {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        display: inline-block;
+    }
+
+    /* =====================
+       WHATSAPP FLOAT
+    ====================== */
+    .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        font-size: 26px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* =====================
+   MOBILE PEQUENO (390px)
+====================== */
+@media (max-width: 390px) {
+    .hero-text {
+        max-width: 260px;
+    }
+
+    .hero-text h1 {
+        font-size: 20px;
+    }
+
+    .hero-text p {
+        font-size: 0.82rem;
+    }
+
+    .timeline-left .section-title {
+        font-size: 28px;
+    }
+
+    .exiba-section-title {
+        font-size: 24px;
+    }
+}
+
+/* =====================
+   MOBILE MÉDIO (480px)
+====================== */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 85vh;
+    }
+
+    .hero-text h1 {
+        font-size: 24px;
+    }
+
+    .hero-text p {
+        font-size: 0.88rem;
+    }
+}
+
+
+/* ======================================================
+   SERVIÇOS — RESPONSIVO GLOBAL (MOBILE FIRST)
+   Afeta SOMENTE comportamento em telas pequenas
+====================================================== */
+
+@media (max-width: 768px) {
+
+    /* =====================
+       CONTAINER GERAL
+    ====================== */
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* =====================
+       TÍTULOS GERAIS (H2)
+    ====================== */
+    .section-title {
+        font-size: 30px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    /* =====================
+       MÍDIA KIT
+       (sem alterar layout, só ajuste fino)
+    ====================== */
+    .midia-kit {
+        padding: 70px 0;
+    }
+
+    .midia-kit-card {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .midia-kit-imagem img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .midia-kit-conteudo h3 {
+        font-size: 1.4rem;
+    }
+
+    /* =====================
+       O QUE FAZEMOS
+    ====================== */
+    .o-que-fazemos {
+        padding: 80px 0 60px;
+    }
+
+    .o-que-fazemos .section-header {
+        margin-bottom: 50px;
+    }
+
+    .o-que-fazemos .section-title {
+        font-size: 32px;
+    }
+
+    .o-que-fazemos .section-subtitle {
+        font-size: 0.95rem;
+    }
+
+    /* Grid vira coluna */
+    .servicos-operacao {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .servico-item h3 {
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+    }
+
+    .servico-item p {
+        font-size: 0.9rem;
+        line-height: 1.65;
+    }
+
+    /* =====================
+       EXECUÇÃO DE EXCELÊNCIA
+    ====================== */
+    .execucao-excelencia {
+        padding: 70px 0;
+    }
+
+    .execucao-excelencia .section-title {
+        font-size: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .lista-excelencia {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .lista-excelencia li {
+        font-size: 0.9rem;
+        margin-bottom: 14px;
+    }
+
+    /* =====================
+       CTA FINAL
+    ====================== */
+    .cta {
+        padding: 70px 0;
+        text-align: center;
+    }
+
+    .cta h2 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+    }
+
+    .cta p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .cta .btn,
+    .cta .btn-lg {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        display: inline-block;
+    }
+
+    /* =====================
+       WHATSAPP FLOAT
+    ====================== */
+    .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        font-size: 26px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* ======================================================
+   EXTRA — CELULARES MENORES (≤ 480px)
+====================================================== */
+
+@media (max-width: 480px) {
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .o-que-fazemos .section-title {
+        font-size: 28px;
+    }
+
+    .cta h2 {
+        font-size: 1.45rem;
+    }
+}
+
+/* ===============================
+   SOBRE A EXIBA — AJUSTES ISOLADOS
+================================ */
+
+.sobre-exiba {
+    padding: 80px 0;
+}
+
+.sobre-exiba-texto {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sobre-exiba-texto p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+/* Equipe */
+.equipe-exiba {
+    padding: 80px 0;
+    background: #ffffff;
+    text-align: center;
+}
+
+.equipe-exiba-texto {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--gray-color);
+}
+
+.equipe-exiba-img {
+    max-width: 900px;
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+
+    .sobre-exiba {
+        padding: 60px 0;
+    }
+
+    .sobre-exiba-texto p {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    .equipe-exiba {
+        padding: 60px 0;
+    }
+
+    .equipe-exiba-texto {
+        font-size: 0.95rem;
+    }
+}
+
+/* zap */ 
+
+/* =====================================================
+   CORREÇÕES MOBILE GLOBAL - EXIBA OUTDOOR
+   Adicione este código ao final do seu styles.css
+===================================================== */
+
+/* RESET MOBILE BASE */
+@media (max-width: 768px) {
+  
+  /* BODY E CONTAINERS */
+  body {
+    padding-top: 80px;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    padding: 0 16px !important;
+    max-width: 100%;
+  }
+  
+  /* HEADER */
+  .header {
+    padding: 12px 20px;
+  }
+  
+  .logo img {
+    height: 45px;
+  }
+  
+  .nav {
+    padding: 0 10px;
+  }
+  
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    height: auto;
+    padding: 0;
+  }
+  
+  .hero-video {
+    filter: brightness(0.4);
+  }
+  
+  .hero-content {
+    padding: 60px 20px;
+    margin-top: 0;
+  }
+  
+  .hero-text {
+    margin-top: 0 !important;
+    max-width: 100%;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p:first-of-type {
+    font-size: 2.5rem !important;
+    line-height: 1.2;
+  }
+  
+  .hero-content p:nth-of-type(2) {
+    font-size: 1.1rem !important;
+    margin-bottom: 25px;
+  }
+  
+  .hero-content .btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 14px 25px;
+    font-size: 0.95rem;
+  }
+
+  .hero{
+  margin-top:-25px!important;
+  padding:60px 16px!important;
+}
+  
+  /* SECTIONS */
+  section {
+    padding: 60px 0 !important;
+  }
+  
+  .section-title {
+    font-size: 1.8rem !important;
+    padding-top: 0 !important;
+    text-align: center;
+  }
+  
+  .section-subtitle {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  
+  /* GRIDS - TODAS AS PÁGINAS */
+  .servicos-grid,
+  .destaques-grid,
+  .depoimentos-grid,
+  .exiba-vantagens-grid,
+  .produtos-grid,
+  .cidades-grid,
+  .midia-grid,
+  .mvp-grid,
+  .servicos-operacao {
+    grid-template-columns: 1fr !important;
+    gap: 25px;
+  }
+  
+  /* CARDS */
+  .servico-card,
+  .destaque-card,
+  .depoimento-card,
+  .exiba-vantagem-card,
+  .produto-card,
+  .cidade-card,
+  .midia-card {
+    padding: 25px 20px;
+    margin: 0;
+  }
+  
+  .produto-imagem,
+  .cidade-imagem {
+    height: 220px !important;
+  }
+  
+  /* TIMELINE HORIZONTAL */
+  .timeline-horizontal {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .timeline-left {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .timeline-left .section-title {
+    font-size: 1.8rem !important;
+    margin-top: 0 !important;
+    max-width: 100%;
+  }
+  
+  .timeline-right {
+    padding-left: 0;
+    border-left: none;
+  }
+  
+  .timeline-right::before {
+    display: none;
+  }
+  
+  .timeline-point {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .timeline-point .number {
+    position: static;
+    margin-bottom: 10px;
+  }
+  
+  .timeline-point .text {
+    margin-left: 0;
+    font-size: 1rem;
+  }
+  
+  /* TIMELINE ALTERNADA (SOBRE) */
+  .timeline-container.alternate {
+    padding: 20px 0;
+  }
+  
+  .timeline-container.alternate::before {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    width: 100% !important;
+    left: 0 !important;
+    padding-left: 50px !important;
+    text-align: left !important;
+  }
+  
+  .timeline-item::before {
+    left: 11px !important;
+  }
+  
+  .timeline-year {
+    font-size: 1.3rem;
+  }
+  
+  .timeline-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .timeline-content p {
+    font-size: 0.9rem;
+  }
+  
+  /* MÍDIA KIT */
+  .midia-kit {
+    padding: 60px 0;
+  }
+  
+  .midia-kit-card {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .midia-kit-imagem {
+    min-height: 250px;
+    width: 100%;
+  }
+  
+  .midia-kit-conteudo {
+    padding: 30px 20px;
+  }
+  
+  .midia-kit-conteudo h3 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  
+  .midia-kit-conteudo p {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  
+  .midia-kit .btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  /* CONTATO */
+  @media (max-width:768px){
+
+/* Empilha tudo */
+.contato-container{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:30px!important;
+  padding:0!important;
+}
+
+/* CARD FORMULÁRIO */
+.contato-container form{
+  background:#ffffff;
+  border-radius:18px;
+  padding:26px 22px!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
+}
+
+/* Campos */
+.form-group{
+  margin-bottom:18px!important;
+}
+
+.form-control{
+  border-radius:12px;
+  padding:14px 14px!important;
+  font-size:15px;
+}
+
+/* Botão */
+.btn-submit{
+  width:100%;
+  border-radius:14px;
+  padding:15px;
+}
+
+/* Informações embaixo */
+.contato-info{
+  background:#f7f7f7!important;
+  border-radius:18px;
+  padding:24px!important;
+}
+
+}
+
+  
+  /* BISSEMANA */
+@media (max-width:768px){
+
+/* Trava largura da bissemana */
+.bissemana-container,
+.faq{
+  width:100%!important;
+  margin:0 auto!important;
+  padding:30px 16px!important;
+}
+
+/* Centraliza FAQ */
+.faq{
+  text-align:left;
+}
+
+.faq-item{
+  margin:0 0 20px 0!important;
+  padding:18px 16px!important;
+  background:#f7f7f7;
+  border-radius:12px;
+}
+
+/* Evita texto colado à esquerda */
+.faq h2{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+}
+
+  /* FAQ */
+  .faq {
+    margin: 60px auto;
+    padding: 0 16px;
+  }
+  
+  .faq h2 {
+    font-size: 1.6rem;
+  }
+  
+  .faq-item h3 {
+    font-size: 1rem;
+  }
+  
+  .faq-item p {
+    font-size: 0.9rem;
+  }
+  
+  /* PONTOS - MAPA */
+  .map-container {
+    height: 400px;
+  }
+  
+  .map-legend {
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .pontos-estrategicos {
+    margin: 60px auto;
+    padding: 0 16px;
+  }
+  
+  .pontos-estrategicos h2 {
+    font-size: 1.6rem;
+  }
+  
+  /* PRODUTOS */
+  @media (max-width:768px){
+
+/* Impede vazamento lateral */
+html, body{
+  max-width:100%;
+  overflow-x:hidden!important;
+}
+
+/* Remove espaço branco do topo */
+.produtos-hero{
+  margin-top:-25px!important;
+  padding:60px 16px!important;
+}
+
+/* Corrige largura real */
+.categorias,
+.produtos-grid,
+.grafica-container{
+  width:100%!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:12px!important;
+  padding-right:12px!important;
+}
+
+/* BOTÕES DE CATEGORIA */
+.categoria-btn{
+  font-size:14px!important;
+  padding:8px 14px!important;
+}
+
+/* Seção gráfica */
+.grafica-container{
+  flex-direction:column!important;
+  gap:20px!important;
+}
+
+.grafica-imagem{
+  width:100%!important;
+  height:200px!important;
+}
+
+.grafica-imagem img{
+  object-fit:cover;
+}
+
+/* Texto central */
+.grafica-texto{
+  text-align:center;
+}
+
+}
+
+  
+  /* SERVIÇOS */
+  .o-que-fazemos {
+    padding: 60px 0;
+  }
+  
+  .o-que-fazemos .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .servico-item h3 {
+    font-size: 1.2rem;
+  }
+  
+  .servico-item p {
+    font-size: 0.95rem;
+  }
+  
+  .execucao-excelencia {
+    padding: 60px 0;
+  }
+  
+  .lista-excelencia li {
+    font-size: 1rem;
+  }
+  
+  /* SOBRE */
+  .page-header {
+    padding: 70px 20px 50px;
+  }
+  
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .sobre-exiba {
+    padding: 60px 0;
+  }
+  
+  .sobre-exiba-texto p {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+  
+  .mvp {
+    padding: 60px 0;
+  }
+  
+  .mvp-item {
+    padding: 30px 20px;
+  }
+  
+  .equipe-exiba {
+    padding: 60px 0;
+  }
+  
+  .equipe-exiba-texto {
+    font-size: 0.95rem;
+  }
+  
+  .equipe-exiba-img {
+    max-width: 100%;
+  }
+  
+  /* CTA */
+  .cta {
+    padding: 60px 20px;
+  }
+  
+  .cta h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  
+  .cta p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+  
+  .cta .btn,
+  .cta .btn-lg {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: inline-block;
+    padding: 14px 25px;
+  }
+  
+  /* PARCERIAS */
+  .Parcerias {
+    padding: 60px 0;
+  }
+  
+  .Parcerias img {
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  /* FOOTER */
+  .footer {
+    padding: 40px 0 20px;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .footer-links h4::after,
+  .footer-contact h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-contact p {
+    justify-content: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .footer-bottom {
+    padding-top: 30px;
+    font-size: 0.85rem;
+  }
+  
+  /* WHATSAPP FLOAT */
+  .whatsapp-float {
+    width: 55px;
+    height: 55px;
+    font-size: 28px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  /* MODAL WHATSAPP */
+  .zap-modal {
+    width: 90%;
+    max-width: 350px;
+  }
+  
+  .zap-modal input,
+  .zap-modal button {
+    width: calc(100% - 24px);
+    margin: 8px 12px;
+  }
+}
+
+/* =====================================================
+   MOBILE PEQUENO (≤ 480px)
+===================================================== */
+@media (max-width: 480px) {
+  
+  body {
+    padding-top: 75px;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  .hero-content p:first-of-type {
+    font-size: 2rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .timeline-left .section-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .cta h2 {
+    font-size: 1.3rem;
+  }
+  
+  .produtos-hero h1,
+  .page-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .bissemana-container h1 {
+    font-size: 1.4rem;
+  }
+  
+  .map-legend {
+    display: none;
+  }
+}
+
+/* =====================================================
+   LANDSCAPE MOBILE (altura pequena)
+===================================================== */
+@media (max-height: 600px) and (orientation: landscape) {
+  
+  .hero {
+    min-height: 100vh;
+  }
+  
+  .hero-content {
+    padding: 40px 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 15px;
+  }
+  
+  .hero-content p {
+    margin-bottom: 15px;
+  }
+}
+
 

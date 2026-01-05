@@ -10,52 +10,83 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .bissemana-container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-        
-        .bissemana-container h1 {
-            color: var(--primary-color);
-            margin-bottom: 30px;
-        }
-        
-        .bissemana-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .back-button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: var(--transition);
-        }
-        
-        .back-button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-    </style>
+        <script src="js/main.js"></script>
+
 </head>
 <body>
     <!-- Header -->
     <div id="header"></div>
 
     <div class="bissemana-container">
-        <h1>Programação Bissemana</h1>
-        <img src="assets/img/Bissemana.jpeg" alt="Programação Bissemana" class="bissemana-image">
-        
+        <h1>Como funciona a Bissemana na mídia exterior</h1>
+        <div class="bissemana-text">
+            <p>A bissemana é o período padrão de veiculação das campanhas de mídia exterior, utilizado para organizar entrada, permanência e saída das peças nos pontos da cidade.</p>
+        </div>
     </div>
+
+    <!-- O que é a bissemana -->
+    <div class="bissemana-container">
+        <h2>O que é a bissemana?</h2>
+        <div class="bissemana-text">
+            <p>Na mídia exterior, a veiculação das campanhas é organizada em períodos fixos chamados de bissemana. Cada bissemana corresponde a aproximadamente 14 dias de exibição contínua da campanha em um ponto específico.</p>
+            <p>Esse modelo permite organização operacional, logística eficiente e previsibilidade para anunciantes e exibidores.</p>
+        </div>
+    </div>
+
+    <!-- Como funciona a veiculação por bissemana -->
+    <div class="bissemana-container">
+        <h2>Como funciona a veiculação por bissemana</h2>
+        <ul class="bissemana-text">
+            <li>Cada campanha é contratada por período de bissemana</li>
+            <li>A mídia permanece exposta durante todo o período, 24 horas por dia</li>
+            <li>A troca das campanhas segue o calendário oficial</li>
+            <li>A produção, instalação e retirada seguem o mesmo ciclo operacional</li>
+        </ul>
+    </div>
+
+    <!-- Como a Exiba opera dentro do calendário -->
+    <div class="bissemana-container">
+        <h2>Como a Exiba opera dentro do calendário</h2>
+        <div class="bissemana-text">
+            <p>A Exiba segue rigorosamente o calendário de bissemana para garantir organização, qualidade de instalação e padrão operacional em todos os seus pontos.</p>
+            <p>Esse modelo permite que as campanhas entrem no ar no período correto, com controle técnico e visual adequado ao formato contratado.</p>
+        </div>
+    </div>
+
+    <!-- Calendário de Bissemana -->
+    <div class="bissemana-container">
+        <h2>Calendário de Bissemana 2026 – Exiba</h2>
+        <img src="assets/img/Bissemana.jpeg" alt="Calendário de bissemana" class="bissemana-image">
+    </div>
+
+    <!-- Dúvidas comuns -->
+    <section class="faq">
+        <h2>Dúvidas comuns sobre a bissemana</h2>
+        <div class="faq-item">
+            <h3>Posso anunciar fora da bissemana?</h3>
+            <p>Não. A veiculação segue períodos fixos para manter a organização operacional da mídia exterior.</p>
+        </div>
+        <div class="faq-item">
+            <h3>A campanha fica no ar todos os dias?</h3>
+            <p>Sim. Durante a bissemana, a campanha permanece exposta 24 horas por dia.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Posso escolher mais de uma bissemana?</h3>
+            <p>Sim. É possível contratar múltiplas bissemanas consecutivas, ampliando o tempo de exposição da campanha.</p>
+        </div>
+    </section>
+
+    <!-- Bissemana e disponibilidade de pontos -->
+    <div class="bissemana-container">
+        <h2>Bissemana e disponibilidade de pontos</h2>
+        <p>A disponibilidade dos pontos está diretamente relacionada ao calendário de bissemana. Por isso, a consulta antecipada é importante para verificar formatos, locais e períodos disponíveis nas cidades atendidas pela Exiba.</p>
+    </div>
+
+    <!-- CTA Final -->
+    <section class="cta">
+        <h2>Para consultar períodos disponíveis e entender como funciona a veiculação em cada formato, entre em contato com nossa equipe comercial.</h2>
+        <a href="contato.html" class="btn btn-primary btn-lg btn-orcamento">Consultar disponibilidade</a>
+    </section>
 
     <!-- Footer -->
     <div id="footer"></div>
@@ -68,8 +99,25 @@
             $("#footer").load("assets/includes/footer.html");
         });
     </script>
-    <a href="https://wa.me/5583999246149?text=Olá!%20Vim%20pelo%20o%20site" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <div class="whatsapp-float" onclick="abrirZapModal()">
+    <i class="fab fa-whatsapp"></i>
+</div>
+
+<div class="zap-overlay" id="zapOverlay">
+  <div class="zap-modal">
+    <div class="zap-header">
+      Olá! Preencha os campos abaixo para iniciar a conversa
+      <span onclick="fecharZapModal()">×</span>
+    </div>
+
+    <input id="z_nome" placeholder="Nome *">
+    <input id="z_email" placeholder="Email *">
+    <input id="z_tel" placeholder="Telefone *">
+    <input id="z_empresa" placeholder="Empresa *">
+    <input id="z_cargo" placeholder="Cargo *">
+
+    <button onclick="enviarLead()">Iniciar a conversa</button>
+  </div>
+</div>
 </body>
 </html>

@@ -10,9 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js"></script>
+
     <style>
-        /* Estilos específicos para a página de Contato */
-        /* Estilos específicos para a página de Contato */
+        
+        
         .contato-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -137,7 +139,7 @@
             }
 
             .info-item {
-                flex-direction: row; /* ainda mantém ícone ao lado do texto */
+                flex-direction: row; 
             }
 
             .info-item i {
@@ -223,7 +225,7 @@
             const assunto = document.getElementById('assunto').value;
             const mensagem = document.getElementById('mensagem').value;
 
-            const para = "Gerencia@exiba.com.br"; // email fixo
+            const para = "Gerencia@exiba.com.br"; 
             const assuntoEmail = encodeURIComponent("Contato do site: " + assunto);
             const corpo = encodeURIComponent(
                 `Nome: ${nome}\nEmail: ${email}\nTelefone: ${telefone}\n\nMensagem:\n${mensagem}`
@@ -467,8 +469,25 @@
     </script>
     
     <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me/5583999246149?text=Olá!%20Vim%20pelo%20o%20site" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <div class="whatsapp-float" onclick="abrirZapModal()">
+    <i class="fab fa-whatsapp"></i>
+</div>
+
+<div class="zap-overlay" id="zapOverlay">
+  <div class="zap-modal">
+    <div class="zap-header">
+      Olá! Preencha os campos abaixo para iniciar a conversa
+      <span onclick="fecharZapModal()">×</span>
+    </div>
+
+    <input id="z_nome" placeholder="Nome *">
+    <input id="z_email" placeholder="Email *">
+    <input id="z_tel" placeholder="Telefone *">
+    <input id="z_empresa" placeholder="Empresa *">
+    <input id="z_cargo" placeholder="Cargo *">
+
+    <button onclick="enviarLead()">Iniciar a conversa</button>
+  </div>
+</div>
 </body>
 </html>

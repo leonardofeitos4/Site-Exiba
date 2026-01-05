@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nossos Produtos - Exiba Outdoor</title>
-    <meta name="description" content="Conheça nossa linha completa de produtos de mídia exterior. Soluções personalizadas para sua marca se destacar.">
+
+    <meta name="description" content="Conheça os formatos de mídia exterior operados pela Exiba. Outdoors, painéis, LED, frontlight e soluções de grande impacto urbano.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+        <script src="js/main.js"></script>
+
+
     <style>
-        /* Estilos específicos para a página de produtos */
+        /* HERO */
         .produtos-hero {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 100px 0 1cqi;
-            text-align: center;        }
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+        }
 
         .produtos-hero h1 {
             font-size: 2.8rem;
@@ -24,90 +31,62 @@
         }
 
         .produtos-hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 0 auto;
+            opacity: .95;
         }
 
+        /* CATEGORIAS */
         .categorias {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 40px;
+            margin: 50px auto;
             flex-wrap: wrap;
-            margin-top: 50px;
         }
 
         .categoria-btn {
-            padding: 10px 25px;
-            background: rgba(0, 0, 0, 0.514); /* cor padrão transparente */
-            border: none;
+            padding: 10px 26px;
             border-radius: 50px;
-            color: #FFD700;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            min-width: 100px;
-            text-align: center;
+            background: rgba(0,0,0,.5);
+            color: #FFD700;
+            transition: .3s;
         }
 
-        .categoria-btn.active {
-            background: #003366; /* cor do botão ativo */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
+        .categoria-btn.active,
         .categoria-btn:hover {
-            background: #003366; /* cor do hover */
+            background: #003366;
         }
 
-        /* RESPONSIVO */
-        @media (max-width: 768px) {
-            .categoria-btn {
-                padding: 8px 20px;
-                font-size: 0.9rem;
-                min-width: 90px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .categorias {
-                flex-direction: column;
-                align-items: center;
-            }
-            .categoria-btn {
-                width: 80%;
-                text-align: center;
-            }
-        }
-
-
+        /* GRID */
         .produtos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
-            padding: 0 20px;
             max-width: 1200px;
-            margin: 0 auto 60px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
         }
 
         .produto-card {
-            background: white;
-            border-radius: 10px;
+            background: #fff;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 18px rgba(0,0,0,.1);
+            transition: .3s;
         }
 
         .produto-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
         }
 
         .produto-imagem {
             width: 100%;
-            height: 250px;
+            height: 240px;
             object-fit: cover;
         }
 
@@ -116,61 +95,49 @@
         }
 
         .produto-info h3 {
-            color: var(--primary-color);
+            font-size: 1.35rem;
             margin-bottom: 10px;
-            font-size: 1.4rem;
+            color: var(--primary-color);
         }
 
         .produto-info p {
+            font-size: .95rem;
             color: var(--gray-color);
-            margin-bottom: 20px;
             line-height: 1.6;
+            margin-bottom: 18px;
         }
 
         .saiba-mais {
-            display: inline-block;
-            color: var(--primary-color);
             font-weight: 600;
+            color: var(--primary-color);
             text-decoration: none;
-            transition: all 0.3s ease;
         }
 
         .saiba-mais:hover {
             color: var(--accent-color);
-            padding-left: 5px;
         }
 
+        /* GRÁFICA */
         .grafica-info {
             background: var(--light-color);
-            padding: 60px 0;
-            margin-top: 0px;
-            width: 100%;
-        }
-
-        /* CONTAINER CORRIGIDO — AGORA FUNCIONA */
-        .grafica-info {
-            background: var(--light-color);
-            padding: 60px 0;
-            width: 100%;
+            padding: 80px 0;
         }
 
         .grafica-container {
-            max-width: 1200px; /* deixa mais largo */
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-
             display: flex;
+            gap: 80px;
             align-items: center;
-            justify-content: flex-start; /* puxa tudo pra esquerda */
-            gap: 80px; /* espaço entre imagem e texto */
+            padding: 0 20px;
         }
 
         .grafica-imagem {
-            width: 520px;        /* tamanho perfeito da imagem */
-            height: 520px;       /* deixa realmente quadrada */
-            border-radius: 12px;
+            width: 520px;
+            height: 520px;
+            border-radius: 14px;
             overflow: hidden;
-            flex-shrink: 0;      /* impede de encolher */
+            flex-shrink: 0;
         }
 
         .grafica-imagem img {
@@ -179,237 +146,251 @@
             object-fit: cover;
         }
 
-        .grafica-texto {
-            max-width: 700px; /* controla largura do texto */
+        .grafica-texto h2 {
+            margin-bottom: 15px;
         }
 
-
-
-        @media (max-width: 768px) {
+        /* RESPONSIVO */
+        @media (max-width: 900px) {
             .grafica-container {
-                grid-template-columns: 1fr;
+                flex-direction: column;
                 text-align: center;
-            }
-
-            .produtos-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Header -->
-    <div id="header"></div>
 
-    <!-- Hero Section -->
-    <section class="produtos-hero">
-        <div class="container">
-            <h1>Nossos Produtos</h1>
-            <p>Conheça nossa linha completa de soluções em mídia exterior</p>
-        </div>
-    </section>
+<div id="header"></div>
 
-    <!-- Filtro de Categorias -->
-    <div class="categorias">
-        <button class="categoria-btn active" data-categoria="todos">Todos</button>
-        <button class="categoria-btn" data-categoria="outdoor">Outdoors</button>
-        <button class="categoria-btn" data-categoria="painel">Painéis</button>
-        <button class="categoria-btn" data-categoria="digital">Leds</button>
-        <button class="categoria-btn" data-categoria="front">Front</button>
-
+<!-- HERO -->
+<section class="produtos-hero">
+    <div class="container">
+        <h1>Nossos Produtos</h1>
+        <p>
+            A Exiba opera diferentes formatos de mídia exterior,
+            indicados para objetivos distintos de visibilidade,
+            posicionamento e impacto urbano.
+        </p>
     </div>
+</section>
 
-    <!-- Grid de Produtos -->
-    <div class="produtos-grid">
-        <!-- Outdoor 1 -->
-        <div class="produto-card" data-categoria="outdoor">
-            <img src="assets/img/outdoor.jpeg" alt="Outdoor Padrão" class="produto-imagem">
-            <div class="produto-info">
-                <h3>Outdoor</h3>
-                <p>Tipo de mídia exterior constituído por uma placa em
-                estrutura de madeira ou em tubos de ferro patente
-                revestida com chapa ou folha de zinco.</p>
-                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
+<!-- FILTRO -->
+<div class="categorias">
+    <button class="categoria-btn active" data-categoria="todos">Todos</button>
+    <button class="categoria-btn" data-categoria="outdoor">Outdoors</button>
+    <button class="categoria-btn" data-categoria="painel">Painéis</button>
+    <button class="categoria-btn" data-categoria="digital">LED</button>
+    <button class="categoria-btn" data-categoria="front">Frontlight</button>
+</div>
 
-        <!-- Painel 1 -->
-        <div class="produto-card" data-categoria="outdoor">
-            <img src="assets/img/outdoorduplo.jpg" alt="Painel Backlight" class="produto-imagem">
-            <div class="produto-info">
-                <h3>Outdoor Duplo</h3>
-                <p>Tipo de mídia exterior constituído por uma placa em
-                estrutura de madeira ou em tubos de ferro patente
-                revestida com chapa ou folha de zinco.</p>
-                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
+<!-- PRODUTOS -->
+<div class="produtos-grid">
 
-        <!-- Digital 1 -->
-        <div class="produto-card" data-categoria="outdoor">
-            <img src="assets/img/outdoor-triplo.jpg" alt="Painel Digital" class="produto-imagem">
-            <div class="produto-info">
-                <h3>Outdoor Triplo</h3>
-                <p>Tipo de mídia exterior constituído por uma placa em
-                estrutura de madeira ou em tubos de ferro patente
-                revestida com chapa ou folha de zinco.</p>
-                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-        <!-- Painel 2 -->
-        <div class="produto-card" data-categoria="painel">
-            <img src="assets/img/MEGAPAINEL.jpg" alt="Painel Frontlight" class="produto-imagem">
-            <div class="produto-info">
-                <h3>Painel Rodoviário</h3>
-                <p>Estão estrategicamente localizados em pontos de
-                    grande visibilidade, instalados nas principais
-                    rodovias da Paraíba e Pernambuco.
-                    Sua medida é de 9 X 6 metros, aplicação de lona e
-                    fixação feita por grampos aplicados na lona.
-                    O período de veiculação de um painel é de no
-                    mínimo 30 dias.
-                    É um excelente veículo de mídia exterior, com ótimo
-                    impacto visual e visto por milhares de pessoas, o
-                    que o torna perfeito para anunciar qualquer marca,
-                    produto ou serviço. Confira diversas opções.
-                    </p>
-                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-
-        <!-- Especial 1 -->
-        <div class="produto-card" data-categoria="painel">
-            <img src="assets/img/MEGAPAINEL2.jpg" alt="Projeto Personalizado" class="produto-imagem">
-            <div class="produto-info">
-                <h3>Mega Painel</h3>
-                <p>Painel em lona 16x10m, com iluminação frontalcom refletores.</p>
-                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-        <div class="produto-card" data-categoria="especial">
-            <img src="assets/img/empena.jpeg" alt="Empena" class="produto-imagem">
-            <div class="produto-info">
-                <h3>Empena</h3>
-                <p>Soluções sob medida para atender necessidades específicas da sua campanha.</p>
-                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-        <div class="produto-card" data-categoria="digital">
-            <img src="assets/img/Led-Horizontal.jpeg" alt="Projeto Personalizado" class="produto-imagem">
-            <div class="produto-info">
-                <h3>LED Horizontal</h3>
-                <p>Uma mídia que oferece um grande retorno visual, devido à iluminação e tecnologiaempregada.
-                O crescimento no volume de automóveis nas ruas é visível a cada dia, o fluxo entre as
-                cidades tem se tornado cada vez maior, valorizando o Painel de LED.
-                Permite o uso de mídias programaticas, veculando artes de acordo com o público e o horário,
-                sendo muito mais rápido o início de uma nova campanha ou alteração.</p>
-                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-        <div class="produto-card" data-categoria="digital">
-            <img src="assets/img/Led-Vertical.jpeg" alt="Projeto Personalizado" class="produto-imagem">
-            <div class="produto-info">
-                <h3>LED Vertical </h3>
-                <p>Uma mídia que oferece um grande retorno visual, devido à iluminação e tecnologiaempregada.
-                O crescimento no volume de automóveis nas ruas é visível a cada dia, o fluxo entre as
-                cidades tem se tornado cada vez maior, valorizando o Painel de LED.
-                Permite o uso de mídias programaticas, veculando artes de acordo com o público e o horário,
-                sendo muito mais rápido o início de uma nova campanha ou alteração.</p>
-                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-        <div class="produto-card" data-categoria="front">
-            <img src="assets/img/Frontlight.jpeg" alt="Projeto Personalizado" class="produto-imagem">
-            <div class="produto-info">
-                <h3>FrontLight</h3>
-                <p>Painel com iluminação frontal e que veicula
-                campanhas publicitárias para serem consumidas a
-                qualquer horário do dia.</p>
-                <a href="https://wa.me/5583999246149?text=Ol%C3%A1!%20Vim%20pelo%20o%20site" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a>
-            </div>
+    <!-- OUTDOOR SIMPLES -->
+    <div class="produto-card" data-categoria="outdoor">
+        <img src="assets/img/outdoor.jpeg" class="produto-imagem">
+        <div class="produto-info">
+            <h3>Outdoor Simples</h3>
+            <p>Formato tradicional aplicado em vias urbanas de grande circulação, indicado para presença contínua e reforço institucional.</p>
+            <a class="saiba-mais" href="https://wa.me/5583999246149">Quero anunciar nesse ponto</a>
         </div>
     </div>
 
-    <!-- Seção Gráfica -->
-    <section class="grafica-info">
-        <div class="grafica-container">
-            <div class="grafica-imagem">
-                <img src="assets/img/grafica.jpeg" alt="Nossa Gráfica">
-            </div>
-            <div class="grafica-texto">
-                <h2>Nossa Estrutura Gráfica</h2>
-                <p>Contamos com gráfica própria,
-                equipada com impressoras digitais de
-                alta qualidade para transformar seu
-                anúncio em realidade. Buscamos
-                constantemente a inovação para a
-                melhor produção em papel, lona,
-                adesivo e projetos especiais. Prezamos
-            sempre pelo mais alto padrão de
-            produção e qualidade, desde a escolha
-            dos melhores insumos até o cuidado e
-            atenção no processo de produção e
-            montagem.</p>
-                
-            </div>
+    <!-- OUTDOOR DUPLO -->
+    <div class="produto-card" data-categoria="outdoor">
+        <img src="assets/img/outdoorduplo.jpg" class="produto-imagem">
+        <div class="produto-info">
+            <h3>Outdoor Duplo</h3>
+            <p>Permite reforço da mensagem ao longo do trajeto, ampliando a frequência de exposição e memorização da marca.</p>
+            <a class="saiba-mais" href="https://wa.me/5583999246149">Quero anunciar nesse ponto</a>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <div id="footer"></div>
+    <!-- OUTDOOR TRIPLO -->
+    <div class="produto-card" data-categoria="outdoor">
+        <img src="assets/img/outdoor-triplo.jpg" class="produto-imagem">
+        <div class="produto-info">
+            <h3>Outdoor Triplo</h3>
+            <p>Formato indicado para campanhas que exigem domínio visual do ponto e maior impacto urbano.</p>
+            <a class="saiba-mais" href="https://wa.me/5583999246149">Quero anunciar nesse ponto</a>
+        </div>
+    </div>
 
-    <script src="js/main.js"></script>
-    <script>
-        // Carrega automaticamente o header e footer
-        document.addEventListener('DOMContentLoaded', function() {
-            // Carrega o header
-            fetch("assets/includes/header.html")
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById("header").innerHTML = data;
-                    // Adiciona a classe 'active' ao link da página atual
-                    document.querySelectorAll('.menu a').forEach(link => {
-                        if (link.getAttribute('href') === 'produtos.html') {
-                            link.classList.add('active');
-                        }
-                    });
-                });
+    <!-- PAINEL RODOVIÁRIO -->
+    <div class="produto-card" data-categoria="painel">
+        <img src="assets/img/MEGAPAINEL2.jpg" class="produto-imagem">
+        <div class="produto-info">
+            <h3>Painel Rodoviário</h3>
+            <p>Aplicado em rodovias e grandes vias de acesso, indicado para alcance ampliado e comunicação de longa distância.</p>
+            <a class="saiba-mais" href="https://wa.me/5583999246149">Quero anunciar nesse ponto</a>
+        </div>
+    </div>
 
-            // Carrega o footer
-            fetch("assets/includes/footer.html")
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById("footer").innerHTML = data;
-                });
+    <!-- MEGA PAINEL -->
+    <div class="produto-card" data-categoria="painel">
+        <img src="assets/img/MEGAPAINEL.jpg" class="produto-imagem">
+        <div class="produto-info">
+            <h3>Mega Painel</h3>
+            <p>Grande formato voltado para campanhas institucionais, lançamentos e marcas consolidadas.</p>
+            <a class="saiba-mais" href="https://wa.me/5583999246149">Quero anunciar nesse ponto</a>
+        </div>
+    </div>
 
-            // Filtro de categorias
-            const botoesCategoria = document.querySelectorAll('.categoria-btn');
-            const cardsProduto = document.querySelectorAll('.produto-card');
+    <!-- LED HORIZONTAL -->
+    <div class="produto-card" data-categoria="digital">
+        <img src="assets/img/Led-Horizontal.jpeg" class="produto-imagem">
+        <div class="produto-info">
+            <h3>LED Horizontal</h3>
+            <p>Mídia digital indicada para campanhas dinâmicas, com atualização de conteúdo ao longo do período contratado.</p>
+            <a class="saiba-mais" href="https://wa.me/5583999246149">Quero anunciar nesse ponto</a>
+        </div>
+    </div>
 
-            botoesCategoria.forEach(botao => {
-                botao.addEventListener('click', () => {
-                    // Remove a classe 'active' de todos os botões
-                    botoesCategoria.forEach(btn => btn.classList.remove('active'));
-                    // Adiciona a classe 'active' apenas ao botão clicado
-                    botao.classList.add('active');
+    <!-- LED VERTICAL -->
+    <div class="produto-card" data-categoria="digital">
+        <img src="assets/img/Led-Vertical.jpeg" class="produto-imagem">
+        <div class="produto-info">
+            <h3>LED Vertical</h3>
+            <p>Formato digital com forte presença visual e destaque no ambiente urbano.</p>
+            <a class="saiba-mais" href="https://wa.me/5583999246149">Quero anunciar nesse ponto</a>
+        </div>
+    </div>
 
-                    const categoria = botao.getAttribute('data-categoria');
+    <!-- FRONTLIGHT -->
+    <div class="produto-card" data-categoria="front">
+        <img src="assets/img/Frontlight.jpeg" class="produto-imagem">
+        <div class="produto-info">
+            <h3>Frontlight</h3>
+            <p>Formato com iluminação direcionada que garante leitura clara da mensagem durante o dia e à noite.</p>
+            <a class="saiba-mais" href="https://wa.me/5583999246149">Quero anunciar nesse ponto</a>
+        </div>
+    </div>
 
-                    // Filtra os cards
-                    cardsProduto.forEach(card => {
-                        if (categoria === 'todos' || card.getAttribute('data-categoria') === categoria) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
+    <!-- EMPENA -->
+    <div class="produto-card" data-categoria="painel">
+        <img src="assets/img/empena.jpeg" class="produto-imagem">
+        <div class="produto-info">
+            <h3>Empena</h3>
+            <p>Formato aplicado em fachadas de edifícios, indicado para campanhas institucionais e forte presença urbana.</p>
+            <a class="saiba-mais" href="https://wa.me/5583999246149">Quero anunciar nesse ponto</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- GRÁFICA -->
+<section class="grafica-info">
+    <div class="grafica-container">
+        <div class="grafica-imagem">
+            <img src="assets/img/grafica.jpeg">
+        </div>
+        <div class="grafica-texto">
+            <h2>Produção Gráfica</h2>
+            <p>
+                A Exiba conta com estrutura gráfica própria,
+                assegurando padrão de impressão, fidelidade visual
+                e controle de qualidade das campanhas veiculadas.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta">
+    <div class="container">
+        <h2>Para informações sobre formatos e pontos disponíveis,</h2>
+        <p>entre em contato com nossa equipe.</p>
+        <a href="contato.html" class="btn btn-primary btn-lg btn-orcamento">Solicitar contato comercial</a>
+    </div>
+</section>
+
+<div id="footer"></div>
+
+<script src="js/main.js"></script>
+
+<script>
+    const botoes = document.querySelectorAll('.categoria-btn');
+    const cards = document.querySelectorAll('.produto-card');
+
+    botoes.forEach(btn => {
+        btn.addEventListener('click', () => {
+            botoes.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cat = btn.dataset.categoria;
+
+            cards.forEach(card => {
+                card.style.display = (cat === 'todos' || card.dataset.categoria === cat)
+                    ? 'block' : 'none';
             });
         });
-    </script>
-    <a href="https://wa.me/5583999246149?text=Olá!%20Vim%20pelo%20o%20site" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // HEADER
+    fetch("assets/includes/header.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("header").innerHTML = data;
+
+            // marca menu ativo
+            document.querySelectorAll('.menu a').forEach(link => {
+                if (link.getAttribute('href') === 'produtos.html') {
+                    link.classList.add('active');
+                }
+            });
+
+            // menu mobile
+            const hamburger = document.querySelector('.hamburger');
+            const menu = document.querySelector('.menu');
+
+            if (hamburger && menu) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    menu.classList.toggle('active');
+                });
+
+                document.querySelectorAll('.menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        menu.classList.remove('active');
+                    });
+                });
+            }
+        });
+
+    // FOOTER
+    fetch("assets/includes/footer.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("footer").innerHTML = data;
+        });
+
+});
+</script>
+<div class="whatsapp-float" onclick="abrirZapModal()">
+    <i class="fab fa-whatsapp"></i>
+</div>
+
+<div class="zap-overlay" id="zapOverlay">
+  <div class="zap-modal">
+    <div class="zap-header">
+      Olá! Preencha os campos abaixo para iniciar a conversa
+      <span onclick="fecharZapModal()">×</span>
+    </div>
+
+    <input id="z_nome" placeholder="Nome *">
+    <input id="z_email" placeholder="Email *">
+    <input id="z_tel" placeholder="Telefone *">
+    <input id="z_empresa" placeholder="Empresa *">
+    <input id="z_cargo" placeholder="Cargo *">
+
+    <button onclick="enviarLead()">Iniciar a conversa</button>
+  </div>
+</div>
 </body>
 </html>
