@@ -639,4 +639,32 @@ document.addEventListener('click', function(e) {
     if (overlay && e.target === overlay) {
         fecharZapModal();
     }
+
+
 });
+
+function enviarEmailContato(){
+
+  const dados = {
+    nome: nome.value.trim(),
+    email: email.value.trim(),
+    telefone: telefone.value.trim(),
+    assunto: assunto.value,
+    mensagem: mensagem.value.trim()
+  };
+
+  if(!dados.nome || !dados.email || !dados.telefone || !dados.assunto || !dados.mensagem){
+    alert("Preencha todos os campos.");
+    return;
+  }
+
+  fetch("send.php", {
+    method: "POST",
+    headers: {"Content-Type":"application/x-www-form-urlencoded"},
+    body: new URLSearchParams(dados)
+  })
+  .then(() => {
+    alert("Mensagem enviada com sucesso!");
+    document.querySelector("form").reset();
+  });
+}

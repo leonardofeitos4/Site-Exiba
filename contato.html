@@ -54,7 +54,7 @@
 
         .info-item i {
             font-size: 1.5rem;
-            color: #00cfff;
+            color: #ffd900ad;
             margin-right: 15px;
             margin-top: 5px;
         }
@@ -72,7 +72,7 @@
         }
 
         .info-text a:hover {
-            color: #00cfff;
+            color: #ffd900ad;
         }
 
         .form-group {
@@ -101,7 +101,7 @@
         }
 
         .btn-submit {
-            background: #00cfff;
+            background: #ffd900ad;
             color: white;
             border: none;
             padding: 12px 30px;
@@ -179,61 +179,46 @@
 
     <!-- Contato -->
     <section class="container">
-        <div class="contato-container">
-                    <form 
-            onsubmit="abrirEmail(); return false;"
-        >
-            <div class="form-group">
-                <label for="nome">Nome Completo *</label>
-                <input type="text" id="nome" name="nome" class="form-control" required>
-            </div>
+       <div class="contato-container">
 
-            <div class="form-group">
-                <label for="email">E-mail *</label>
-                <input type="email" id="email" name="email" class="form-control" required>
-            </div>
+    <!-- FORMULÁRIO -->
+    <form onsubmit="enviarEmailContato(); return false;">
 
-            <div class="form-group">
-                <label for="telefone">Telefone *</label>
-                <input type="tel" id="telefone" name="telefone" class="form-control" required>
-            </div>
+      <div class="form-group">
+        <label>Nome Completo *</label>
+        <input type="text" id="nome" class="form-control" required>
+      </div>
 
-            <div class="form-group">
-                <label for="assunto">Assunto *</label>
-                <select id="assunto" name="assunto" class="form-control" required>
-                    <option value="">Selecione um assunto</option>
-                    <option value="orcamento">Solicitar Orçamento</option>
-                    <option value="duvidas">Dúvidas</option>
-                    <option value="sugestoes">Sugestões</option>
-                    <option value="outros">Outros</option>
-                </select>
-            </div>
+      <div class="form-group">
+        <label>E-mail *</label>
+        <input type="email" id="email" class="form-control" required>
+      </div>
 
-            <div class="form-group">
-                <label for="mensagem">Mensagem *</label>
-                <textarea id="mensagem" name="mensagem" class="form-control" required></textarea>
-            </div>
+      <div class="form-group">
+        <label>Telefone *</label>
+        <input type="tel" id="telefone" class="form-control" required>
+      </div>
 
-            <button type="submit" class="btn-submit">Enviar Mensagem</button>
-        </form>
+      <div class="form-group">
+        <label>Assunto *</label>
+        <select id="assunto" class="form-control" required>
+          <option value="">Selecione um assunto</option>
+          <option value="Orçamento">Solicitar Orçamento</option>
+          <option value="Dúvidas">Dúvidas</option>
+          <option value="Sugestões">Sugestões</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
 
-        <script>
-        function abrirEmail() {
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const telefone = document.getElementById('telefone').value;
-            const assunto = document.getElementById('assunto').value;
-            const mensagem = document.getElementById('mensagem').value;
+      <div class="form-group">
+        <label>Mensagem *</label>
+        <textarea id="mensagem" class="form-control" required></textarea>
+      </div>
 
-            const para = "Gerencia@exiba.com.br"; 
-            const assuntoEmail = encodeURIComponent("Contato do site: " + assunto);
-            const corpo = encodeURIComponent(
-                `Nome: ${nome}\nEmail: ${email}\nTelefone: ${telefone}\n\nMensagem:\n${mensagem}`
-            );
-
-            window.location.href = `mailto:${para}?subject=${assuntoEmail}&body=${corpo}`;
-        }
-        </script>
+      <button type="submit" class="btn-submit">Enviar Mensagem</button>
+    </form>
+<!-- INFORMAÇÕES -->
+        
 
             
             <div class="contato-info">
@@ -267,8 +252,8 @@
                     <i class="fas fa-envelope"></i>
                     <div class="info-text">
                         <h4>E-mail</h4>
-                        <a href="mailto:contato@exibaoutdoor.com.br">contato@exibaoutdoor.com.br</a>
-                        <a href="mailto:comercial@exibaoutdoor.com.br">comercial@exibaoutdoor.com.br</a>
+                        <a href="mailto:contato@exibaoutdoor.com.br">gerencia@exiba.com.br</a>
+                        
                     </div>
                 </div>
                 
@@ -439,33 +424,7 @@
         });
         
         // Validação do formulário
-        document.getElementById('form-contato').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validação básica
-            const nome = document.getElementById('nome').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const telefone = document.getElementById('telefone').value.trim();
-            const assunto = document.getElementById('assunto').value;
-            const mensagem = document.getElementById('mensagem').value.trim();
-            
-            if (!nome || !email || !telefone || !assunto || !mensagem) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
-            }
-            
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                alert('Por favor, insira um e-mail válido.');
-                return;
-            }
-            
-            // Aqui você pode adicionar o código para enviar o formulário
-            // Por exemplo, usando fetch() para enviar para um servidor
-            
-            // Simulação de envio
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-            this.reset();
-        });
+        
     </script>
     
     <!-- Botão Flutuante do WhatsApp -->

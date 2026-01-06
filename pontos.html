@@ -18,6 +18,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js"></script>
 </head>
 
 <body>
@@ -172,49 +173,61 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => document.getElementById("footer").innerHTML = data);
 });
 </script>
-
+<script src="js/pontos.js"></script>
+<script src="js/main.js"></script>
+<script src="js/zonas.js"></script>
 <!-- ================= GOOGLE MAPS ================= -->
 <script>
 function initMap() {
-    const center = { lat: -7.5, lng: -36.5 };
 
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 8,
-        center: center,
-        streetViewControl: false,
-        styles: [
-            { featureType: "poi", stylers: [{ visibility: "off" }] },
-            { featureType: "transit", stylers: [{ visibility: "off" }] }
-        ]
-    });
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 7,
+    center: { lat: -7.7, lng: -35.5 }, // centro PB/PE
+    streetViewControl: false
+  });
 
-    const heatmapData = [
-        new google.maps.LatLng(-7.1195, -34.8450), // JP
-        new google.maps.LatLng(-7.2307, -35.8816), // CG
-        new google.maps.LatLng(-8.2849, -35.9704)  // Caruaru
-    ];
+  const heatData = zonas.map(z => ({
+    location: new google.maps.LatLng(z.lat, z.lng),
+    weight: z.peso
+  }));
 
-    new google.maps.visualization.HeatmapLayer({
-        data: heatmapData,
-        map: map,
-        radius: 50
-    });
+  new google.maps.visualization.HeatmapLayer({
+  data: heatData,
+  map,
+  radius: 110,
+  opacity: 0.40,
+  dissipating: true,
+  maxIntensity: 8
+});
 
-    const markers = [
-        { position: { lat: -7.1195, lng: -34.8450 }, title: "João Pessoa" },
-        { position: { lat: -7.2307, lng: -35.8816 }, title: "Campina Grande" },
-        { position: { lat: -8.2849, lng: -35.9704 }, title: "Caruaru" }
-    ];
+const hotspots = [
+  { nome: "João Pessoa", lat: -7.115, lng: -34.864, raio: 12000 },
+  { nome: "Campina Grande", lat: -7.2307, lng: -35.8816, raio: 15000 },
+  { nome: "Caruaru", lat: -8.2849, lng: -35.9692, raio: 14000 }
+];
 
-    markers.forEach(m => {
-        new google.maps.Marker({
-            position: m.position,
-            map: map,
-            title: m.title
-        });
-    });
+hotspots.forEach(h => {
+  new google.maps.Circle({
+    strokeColor: "#e53935",
+    strokeOpacity: 0,
+    fillColor: "#e53935",
+    fillOpacity: 0.08,
+    map,
+    center: { lat: h.lat, lng: h.lng },
+    radius: h.raio
+  });
+});
+
+
+  // ==== AJUSTE AUTOMÁTICO DO ZOOM E CENTRO ====
+  const bounds = new google.maps.LatLngBounds();
+  zonas.forEach(z => bounds.extend({ lat: z.lat, lng: z.lng }));
+  map.fitBounds(bounds);
 }
+
+
 </script>
+
 
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8JGyempUB4eN9AikVugjykJZNMzD8TL8&libraries=visualization&callback=initMap"
